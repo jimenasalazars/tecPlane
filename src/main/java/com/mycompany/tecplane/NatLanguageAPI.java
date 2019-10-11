@@ -32,6 +32,7 @@ public class NatLanguageAPI {
 
       System.out.printf("Text: %s%n", text);
       System.out.printf("Sentiment: %s, %s%n", sentiment.getScore(), sentiment.getMagnitude());
+      System.out.print("Holaa");
     }
   }
 }
