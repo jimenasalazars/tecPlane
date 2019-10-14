@@ -12,6 +12,6 @@ package com.mycompany.tecplane;
 public class Prueba {
         public static void Main(String[] args)
         {
-            System.out.println("Hola mundo!12345");
+            System.out.println("Hola mundo!12345sdfghjk");
         } 
 }
