@@ -10,7 +10,5 @@ package Datos;
  * @author Usuario
  */
 public class API {
-        public static void Main(String[] args)
-        {
-        } 
+        
 }
