@@ -6,7 +6,6 @@ package Datos;
  * @param <T>
  */
 public class ColaG <T>{
-        public static ColaG colapersonas = new ColaG();
         private Node<T> front;
 	private Node<T> rear;
 	private int size;
