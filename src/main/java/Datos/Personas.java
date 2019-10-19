@@ -18,7 +18,16 @@ public class Personas {
     private String lugarDeDestino;
     private int clase;
     private String asiento;
-
+/**
+ * 
+ * @param nombre
+ * @param fechaDeNacimiento
+ * @param númeroDePasaporte
+ * @param nacionalidad
+ * @param lugarDeOrige
+ * @param lugarDeDestino
+ * @param clase 
+ */
     public Personas(String nombre, String fechaDeNacimiento, int númeroDePasaporte, String nacionalidad, String lugarDeOrige, String lugarDeDestino, int clase) {
         this.nombre = nombre;
         this.fechaDeNacimiento = fechaDeNacimiento;
@@ -92,5 +101,6 @@ public class Personas {
     public void setAsiento(String asiento) {
         this.asiento = asiento;
     }
+    //Metodos
 
 }
