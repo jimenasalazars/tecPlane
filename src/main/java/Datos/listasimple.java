@@ -8,16 +8,75 @@ package Datos;
 /**
  *
  * @author samuel y jimena
- * @param <T>
+ * 
  */
 
-public class listasimple <T> {
+public class listasimple {
+    private class Nodo {
+        //atributos
 
-        
-	//atributos LinkedList
-	private Node<T> head;
-	private Node<T> current;
-	private Node<T> tail;
+        public Vuelos element;
+        public Nodo next;
+
+        //Constructores
+        public Nodo() {
+            this.element = null;
+            this.next = null;
+        }
+
+        public Nodo(Vuelos element) {
+            this.element = element;
+            this.next = null;
+        }
+
+        public Nodo(Vuelos element, Nodo next) {
+            this.element = element;
+            this.next = next;
+        }
+
+        /**
+         * método para obtener el elemento de un nodo
+         *
+         * @return
+         */
+
+        public Vuelos getElement() {
+            return this.element;
+        }
+
+        /**
+         * metodo para definir el siguiente nodo
+         *
+         * @param element
+         */
+        public void setElement(Vuelos element) {
+            this.element = element;
+        }
+
+        /**
+         * método para referenciar el siguiente nodo
+         *
+         * @return
+         */
+        public Nodo getNext() {
+            return this.next;
+        }
+
+        /**
+         * método para definir el siguiente nodo
+         *
+         * @param next
+         */
+        public void setNext(Nodo next) {
+            this.next = next;
+        }
+
+    }
+
+    //atributos LinkedList
+        private Nodo head;
+	private Nodo current;
+	private Nodo tail;
 	private int position;
 	private int size;
 	
@@ -27,7 +86,7 @@ public class listasimple <T> {
 	 * Contructor predeterminado
 	 */
 	public listasimple() {
-		this.head = new Node<T>();
+		this.head = new Nodo();
 		this.current = this.head;
 		this.tail = this.head;
 		this.size = 0;
@@ -48,7 +107,7 @@ public class listasimple <T> {
      *
      * @return
      */
-    public Node<T> getHead() {
+    public Nodo getHead() {
         return head;
     }
 
@@ -57,7 +116,7 @@ public class listasimple <T> {
      *
      * @param head
      */
-    public void setHead(Node<T> head) {
+    public void setHead(Nodo head) {
         this.head = head;
     }
 
@@ -66,7 +125,7 @@ public class listasimple <T> {
      *
      * @return
      */
-    public Node<T> getCurrent() {
+    public Nodo getCurrent() {
         return current;
     }
 
@@ -75,7 +134,7 @@ public class listasimple <T> {
      *
      * @param current
      */
-    public void setCurrent(Node<T> current) {
+    public void setCurrent(Nodo current) {
         this.current = current;
     }
 
@@ -84,7 +143,7 @@ public class listasimple <T> {
      *
      * @return
      */
-    public Node<T> getTail() {
+    public Nodo getTail() {
         return tail;
     }
 
@@ -93,7 +152,7 @@ public class listasimple <T> {
      *
      * @param tail
      */
-    public void setTail(Node<T> tail) {
+    public void setTail(Nodo tail) {
         this.tail = tail;
     }
 
@@ -129,7 +188,7 @@ public class listasimple <T> {
      *
      * @return
      */
-    public Object getfarmacia() {
+    public Vuelos getVuelo() {
         return this.current.getElement();
     }
 
@@ -138,9 +197,9 @@ public class listasimple <T> {
      *
      * @param element
      */
-    public void insert(T element) {
+    public void insert(Vuelos element) {
         //insertar en cualquier posici�n
-        Node<T> newNode = new Node(element, this.current.getNext());
+        Nodo newNode = new Nodo(element, this.current.getNext());
         this.current.setNext(newNode);
         this.current = newNode;
         this.setPosition(position + 1);
@@ -158,9 +217,9 @@ public class listasimple <T> {
      *
      * @param element
      */
-    public void append(T element) {
+    public void append(Vuelos element) {
         //siempre se pega al final de la lista
-        Node<T> newNode = new Node(element);
+        Nodo newNode = new Nodo(element);
         this.tail.setNext(newNode);
         this.tail = newNode;
         this.size++;
@@ -176,7 +235,7 @@ public class listasimple <T> {
         } //tambi�n if (this.size == 0) ...
 
         //en temp se va a almacenar el nodo ANTERIOR al que se quiere borrar
-        Node<T> temp = this.head;
+        Nodo temp = this.head;
         while (temp.getNext() != this.current) {
             temp = temp.getNext();
         }
@@ -199,7 +258,7 @@ public class listasimple <T> {
      * método para vaciar la lista
      */
     public void clear() {
-        this.head = this.tail = this.current = new Node();
+        this.head = this.tail = this.current = new Nodo();
         this.position = -1;
         this.size = 0;
     }
@@ -209,7 +268,7 @@ public class listasimple <T> {
      *
      * @return
      */
-    public Object getElement() {
+    public Vuelos getElement() {
         return this.current.getElement();
     }
 
@@ -247,7 +306,7 @@ public class listasimple <T> {
             System.out.println("Actualmente en primer nodo, no se puede retroceder");
             return false;
         }
-        Node temp = head;
+        Nodo temp = head;
         this.position = -1;
         while (temp.getNext() != this.current) {
             temp = temp.getNext();
@@ -309,8 +368,8 @@ public class listasimple <T> {
      * @param element
      * @return
      */
-    public int getPositionOfElement(Object element) {
-        Node tempNode = this.head;
+    public int getPositionOfElement(Vuelos element) {
+        Nodo tempNode = this.head;
         int positions = -1;
         while (tempNode != null) {
             if (tempNode.getElement() != null && tempNode.getElement().equals(element)) {
@@ -321,5 +380,5 @@ public class listasimple <T> {
         }
         return -1;
     }
-
+    
 }
