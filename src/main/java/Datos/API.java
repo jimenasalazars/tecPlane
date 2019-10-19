@@ -5,10 +5,22 @@
  */
 package Datos;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  *
  * @author Usuario
  */
 public class API {
+        Timer timer = new Timer();
         
+        TimerTask task= new TimerTask() {
+            @Override
+            public void run() {
+               System.out.println("Holaaaaaaa");
+            }
+        };{
+        
+    }
 }
