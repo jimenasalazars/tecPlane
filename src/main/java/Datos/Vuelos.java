@@ -10,14 +10,19 @@ package Datos;
  * @author Usuario
  */
 public class Vuelos {
+    public static String PrioridadSeleccionada = "";
     
-    public static listasimple<Vuelos> listaVuelos = new listasimple<>();
+    public static listasimple listaVuelos = new listasimple();
     
     private int puerta;
     private String vuelo;
     private boolean abordo;
     private String Destino;
-
+    private ColaG ColaEspecial = new ColaG();
+    private ColaG ColaOro = new ColaG();
+    private ColaG ColaPlatino = new ColaG();
+    private ColaG ColaEconomico = new ColaG();
+    private Heap HeapPersonas = new Heap();
     
     
     public Vuelos(String vuelo, boolean abordo, String Destino) {
@@ -26,6 +31,46 @@ public class Vuelos {
         this.Destino = Destino;
     }
 
+    public ColaG getColaEspecial() {
+        return ColaEspecial;
+    }
+
+    public void setColaEspecial(ColaG ColaEspecial) {
+        this.ColaEspecial = ColaEspecial;
+    }
+
+    public ColaG getColaOro() {
+        return ColaOro;
+    }
+
+    public void setColaOro(ColaG ColaOro) {
+        this.ColaOro = ColaOro;
+    }
+
+    public ColaG getColaPlatino() {
+        return ColaPlatino;
+    }
+
+    public void setColaPlatino(ColaG ColaPlatino) {
+        this.ColaPlatino = ColaPlatino;
+    }
+
+    public ColaG getColaEconomico() {
+        return ColaEconomico;
+    }
+
+    public void setColaEconomico(ColaG ColaEconomico) {
+        this.ColaEconomico = ColaEconomico;
+    }
+
+    public Heap getHeapPersonas() {
+        return HeapPersonas;
+    }
+
+    public void setHeapPersonas(Heap HeapPersonas) {
+        this.HeapPersonas = HeapPersonas;
+    }
+    
     public int getPuerta() {
         return puerta;
     }
