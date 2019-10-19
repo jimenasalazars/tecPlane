@@ -8,12 +8,12 @@
 /**
  *
  * @author samuel y jimena
- * @param <T>
+ * @param 
  */
-public class Node<T> {
+public class Node {
     //atributos
-		public T element;
-		public Node<T> next;
+		public Personas element;
+		public Node next;
 		
 		//Constructores
 		public Node() {
@@ -21,12 +21,12 @@ public class Node<T> {
 			this.next = null;
 		}
 		
-		public Node(T element) {
+		public Node(Personas element) {
 			this.element = element;
 			this.next = null;
 		}
 		
-		public Node(T element, Node<T> next) {
+		public Node(Personas element, Node next) {
 			this.element = element;
 			this.next = next;
 		}
@@ -35,14 +35,14 @@ public class Node<T> {
  * @return 
  */
 		
-		public T getElement() {
+		public Personas getElement() {
 			return this.element;
 		}
 /**
  * metodo para definir el siguiente nodo
  * @param element 
  */		
-		public void setElement(T element) {
+		public void setElement(Personas element) {
 			this.element = element;
 		}
 /**
@@ -56,7 +56,7 @@ public class Node<T> {
  * método para definir el siguiente nodo
  * @param next 
  */		
-		public void setNext(Node<T> next) {
+		public void setNext(Node next) {
 			this.next = next;	
 		}
     
