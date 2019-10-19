@@ -38,6 +38,10 @@ public class Personas {
         this.clase = clase;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getNombre() {
         return nombre;
     }
