@@ -102,5 +102,21 @@ public class Vuelos {
     public void setDestino(String Destino) {
         this.Destino = Destino;
     }
+
+    public static String getPrioridadSeleccionada() {
+        return PrioridadSeleccionada;
+    }
+
+    public static void setPrioridadSeleccionada(String PrioridadSeleccionada) {
+        Vuelos.PrioridadSeleccionada = PrioridadSeleccionada;
+    }
+
+    public static listasimple getListaVuelos() {
+        return listaVuelos;
+    }
+
+    public static void setListaVuelos(listasimple listaVuelos) {
+        Vuelos.listaVuelos = listaVuelos;
+    }
     
 }
