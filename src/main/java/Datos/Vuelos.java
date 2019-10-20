@@ -11,7 +11,8 @@ package Datos;
  */
 public class Vuelos {
     public static String PrioridadSeleccionada = "";
-    
+    public static int rangoTiempo = 0;
+    public static int cantPuertas = 0;
     public static listasimple listaVuelos = new listasimple();
     
     private int puerta;
@@ -29,6 +30,10 @@ public class Vuelos {
         this.vuelo = vuelo;
         this.abordo = abordo;
         this.Destino = Destino;
+    }
+
+    public Vuelos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public ColaG getColaEspecial() {
@@ -118,5 +123,23 @@ public class Vuelos {
     public static void setListaVuelos(listasimple listaVuelos) {
         Vuelos.listaVuelos = listaVuelos;
     }
+
+    public static int getCantPuertas() {
+        return cantPuertas;
+    }
+
+    public static void setCantPuertas(int cantPuertas) {
+        Vuelos.cantPuertas = cantPuertas;
+    }
+
+    public static int getRangoTiempo() {
+        return rangoTiempo;
+    }
+
+    public static void setRangoTiempo(int rangoTiempo) {
+        Vuelos.rangoTiempo = rangoTiempo;
+    }
+    
+    
     
 }
