@@ -10,7 +10,7 @@ package Datos;
  * @author Usuario
  */
 public class Vuelos {
-    public static String PrioridadSeleccionada = "heap";
+    public static String PrioridadSeleccionada = "";
     
     public static listasimple listaVuelos = new listasimple();
     
