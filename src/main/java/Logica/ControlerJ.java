@@ -51,8 +51,29 @@ public class ControlerJ {
 
             //Vuelos vueloMostrar = (Vuelos) vueloTemp.getElement();
             String vueloNombreDestino = vueloTemp.getElement().getDestino();
-            AsignacionVuelos.add("Vuelo con destino a "+vueloNombreDestino);
+            AsignacionVuelos.add("Destino: "+vueloNombreDestino);
             vueloTemp = vueloTemp.getNext();
         }
+    }
+    
+    public static String asignar(String Destination) {
+        int cantidad = Vuelos.disminucionPuertas;
+        listasimple.Nodo vueloTemp = Vuelos.listaVuelos.getHead().getNext();
+
+        for (int i = 0; i < Vuelos.listaVuelos.getSize(); i++) {
+            if (cantidad > 0) {
+                if (vueloTemp.getElement().getDestino().equals(Destination)) {
+                    vueloTemp.getElement().setPuerta(cantidad);
+                    String dato = "La puerta asignada es: " + cantidad;
+                    Vuelos.setCantPuertas(cantidad-1);
+                    return dato;
+                } else {
+                    vueloTemp = vueloTemp.getNext();
+                }
+            } else {
+                return "No hay puertas disponibles";
+            }
+        }
+        return "Imposible realizar la accion solicitada";
     }
     }

@@ -13,6 +13,7 @@ public class Vuelos {
     public static String PrioridadSeleccionada = "";
     public static int rangoTiempo = 0;
     public static int cantPuertas = 0;
+    public static int disminucionPuertas=0;
     public static listasimple listaVuelos = new listasimple();
     
     private int puerta;
@@ -139,7 +140,14 @@ public class Vuelos {
     public static void setRangoTiempo(int rangoTiempo) {
         Vuelos.rangoTiempo = rangoTiempo;
     }
-    
+
+    public static int getDisminucionPuertas() {
+        return disminucionPuertas;
+    }
+
+    public static void setDisminucionPuertas(int disminucionPuertas) {
+        Vuelos.disminucionPuertas = disminucionPuertas;
+    }
     
     
 }
