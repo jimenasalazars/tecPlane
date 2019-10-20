@@ -5,6 +5,11 @@
  */
 package Interfaz;
 
+import Logica.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Usuario
@@ -73,6 +78,11 @@ public class ConfiguracionInicial extends javax.swing.JFrame {
         });
 
         jTextField4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel6.setText("Mínimo");
@@ -161,15 +171,54 @@ public class ConfiguracionInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        SeleccionDeModulos ventSiguiente = new SeleccionDeModulos();
-        ventSiguiente.setTitle("Seleccion de Modulos");
-        dispose();
-        ventSiguiente.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+        try{
+            String cadena = jTextField1.getText(); 
+            cadena.toLowerCase();
+            if ("cola".equals(cadena) || "heap".equals(cadena)){
+                String puertas = jTextField2.getText();
+                String tiempo = jTextField4.getText();
+                int PuertasIngresadas = Integer.parseInt(puertas);
+                int tiempoIngresado = Integer.parseInt(tiempo);
+                Pattern patron = Pattern.compile("[^A-Za-z ]");
+                Matcher encaja = (patron.matcher(cadena));
 
+                if (!encaja.find()) {
+                    if (ControlerJ.isNumeric(puertas)) {
+                        if (ControlerJ.isNumeric(puertas)) {
+                            ControlerJ.setConfInicial(cadena, PuertasIngresadas, tiempoIngresado);
+                            AsignacionVuelos ventSiguiente = new AsignacionVuelos();
+                            ventSiguiente.setTitle("Asignacion de Vuelos");
+                            dispose();
+                            ventSiguiente.setVisible(true);
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Ingrese solo valores numéricos", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Ingrese solo valores numéricos", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ingrese solo letras", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else{
+                JOptionPane.showMessageDialog(null, "Ingrese solo las estructuras cola o heap", "Error", JOptionPane.ERROR_MESSAGE);
+                
+            }
+            
+        }
+        catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Verifique los datos ingresado", "Error",JOptionPane.ERROR_MESSAGE);
+            }
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+    
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
 
     /**
      * @param args the command line arguments
