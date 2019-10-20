@@ -18,6 +18,7 @@ public class ControlerJ {
         Vuelos.setPrioridadSeleccionada(prioridad);
         Vuelos.setCantPuertas(puertas);
         Vuelos.setRangoTiempo(tiempo);
+        Vuelos.setDisminucionPuertas(puertas);
     }
     public static boolean isNumeric(String cadena){
 	try {
