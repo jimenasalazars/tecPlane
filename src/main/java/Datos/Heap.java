@@ -60,6 +60,7 @@ public class Heap {
     }
     /* Atributos */
     private Nodo raiz;
+    private int size;
 
     /* Contructories */
     
@@ -74,7 +75,16 @@ public class Heap {
         this.raiz = raiz;
     }
 
+    
+    public int getSize() {
+        return size;
+    }
+
     /* Setters y Getters */
+    public void setSize(int size) {
+        this.size = size;
+    }
+
     public Nodo getRaiz() {
         return raiz;
     }
@@ -127,6 +137,7 @@ public class Heap {
 
     public void addNodo( Personas nodo ) {
         this.addNodo( new Nodo(nodo) , this.raiz );
+        this.size = this.size+1;
     }
     
     public boolean delete(int value){
