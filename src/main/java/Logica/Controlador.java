@@ -205,16 +205,10 @@ public class Controlador {
         Vuelos.listaVuelos.insert(vue4);*/
 
         
-        listasimple.Nodo Lhead = Vuelos.listaVuelos.getHead().getNext();
+        
 
-        for (int i=0; i< Vuelos.listaVuelos.getSize();i++){
-            if (Lhead.getElement().getPuerta()== 0){
-                Lhead = Lhead.getNext();
-            }
-            else{
-                listbox.add("Puerta " + Lhead.getElement().getPuerta());
-                Lhead = Lhead.getNext();
-            }
+        for (int i=1; i<= Vuelos.cantPuertas;i++){
+            listbox.add("Puerta " + i);
         }
         
     }
