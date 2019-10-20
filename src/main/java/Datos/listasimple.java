@@ -12,7 +12,7 @@ package Datos;
  */
 
 public class listasimple {
-    private class Nodo {
+    public class Nodo {
         //atributos
 
         public Vuelos element;
