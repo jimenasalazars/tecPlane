@@ -15,6 +15,9 @@ public class Vuelos {
     public static int cantPuertas = 0;
     public static int disminucionPuertas=0;
     public static listasimple listaVuelos = new listasimple();
+    public static Comentarios comentarios = new Comentarios();
+    public static int puertaSeleccionada = 0;
+    
     
     private int puerta;
     private String vuelo;
@@ -148,6 +151,21 @@ public class Vuelos {
     public static void setDisminucionPuertas(int disminucionPuertas) {
         Vuelos.disminucionPuertas = disminucionPuertas;
     }
-    
+
+    public static Comentarios getComentarios() {
+        return comentarios;
+    }
+
+    public static void setComentarios(Comentarios comentarios) {
+        Vuelos.comentarios = comentarios;
+    }
+
+    public static int getPuertaSeleccionada() {
+        return puertaSeleccionada;
+    }
+
+    public static void setPuertaSeleccionada(int puertaSeleccionada) {
+        Vuelos.puertaSeleccionada = puertaSeleccionada;
+    }
     
 }
