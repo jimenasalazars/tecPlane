@@ -101,19 +101,7 @@ public class AtencionPersonas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        /**
-        Timer timer1 = new Timer();
-        
-        TimerTask task1= new TimerTask() {
-            @Override
-            public void run() {
-                Controlador.ingresarPersona("Nueva Persona", "15/2/97", 123456789, "Nicaraguense", "El Salvador", "CostaRica", 1);
-            }
-        };
-
-        timer1.schedule(task1, 2000, 20000);
-        */
-        
+        ControlerJ.AleatorioEspecial(Vuelos.puertaSeleccionada, true);
         Timer timer = new Timer();
         
         TimerTask task= new TimerTask() {
@@ -124,11 +112,10 @@ public class AtencionPersonas extends javax.swing.JFrame {
                 if ("Avión vacío".equals(info)) {
                     timer.cancel();
                     timer.purge();
-                    //timer1.cancel();
-                    //timer1.purge();
+                    ControlerJ.AleatorioEspecial(Vuelos.puertaSeleccionada, false);
                     return;
                 }
-
+                
                 String comentario = JOptionPane.showInputDialog("Ingrese un comentario");
                 System.out.println(comentario);
                 try {

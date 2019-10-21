@@ -15,6 +15,11 @@ import com.google.cloud.language.v1.Sentiment;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Usuario
@@ -277,7 +282,15 @@ public class ControlerJ {
     
     public static String cerrarPuerta(int puerta){
         listasimple.Nodo vueloTemp = Vuelos.listaVuelos.getHead().getNext();
-
+        for (int i = 0; i < Vuelos.listaVuelos.getSize() ; i++) {
+            if (vueloTemp.getElement().getPuerta()==puerta){
+                Vuelos.listaVuelos.setCurrent(vueloTemp);
+                Vuelos.listaVuelos.remove();
+            }
+            else{
+                vueloTemp = vueloTemp.getNext();
+            }
+        }
         for (int i = 0; i < Vuelos.listaVuelos.getSize() ; i++) {
             if (vueloTemp.getElement().getPuerta()==0){
                 vueloTemp.getElement().setPuerta(puerta);
@@ -289,4 +302,140 @@ public class ControlerJ {
         }
         return "No hay vuelos por asignar";
     }
+    public static void AleatorioEspecial(int puerta, boolean elemento) {
+        Personas per = new Personas();
+        per.setClase(1);
+        per.setNombre("NuevaPersona");
+        per.setNúmeroDePasaporte(123456789);
+        
+        Timer timer = new Timer();
+        
+        TimerTask task= new TimerTask() {
+            @Override
+            public void run() {
+                if (elemento == false) {
+                    timer.cancel();
+                    timer.purge();
+                    return;
+                }
+        if ("cola".equals(Vuelos.PrioridadSeleccionada)) {
+            listasimple.Nodo Lhead = Vuelos.listaVuelos.getHead().getNext();
+            System.out.println(Vuelos.listaVuelos.getSize());
+            for (int i = 0; i < Vuelos.listaVuelos.getSize(); i++) {
+                if (Lhead.getElement().getPuerta() == puerta) {
+                    System.out.println("entro");
+                    Lhead.getElement().getColaEspecial().enqueue(per);
+                    return;
+                } else {
+                    Lhead = Lhead.getNext();
+                }
+            }
+
+        }
+        if ("heap".equals(Vuelos.PrioridadSeleccionada)) {
+            listasimple.Nodo headL = Vuelos.listaVuelos.getHead().getNext();
+            for (int i = 0; i < Vuelos.listaVuelos.getSize(); i++) {
+                if (headL.getElement().getPuerta() == puerta) {
+                    headL.getElement().getHeapPersonas().addNodo(per);
+                    return;
+                } else {
+                    headL = headL.getNext();
+                }
+
+            }
+        }
+            }
+        };
+        timer.schedule(task, 2000, 30000);
+    }
+    public static String checinEstadistica(){
+        int especial =0;
+        int oro =0;
+        int platino =0;
+        int economico =0;
+        
+        if ("cola".equals(Vuelos.PrioridadSeleccionada)) {
+            listasimple.Nodo Lhead = Vuelos.listaVuelos.getHead().getNext();
+            System.out.println(Vuelos.listaVuelos.getSize());
+            for (int i = 0; i < Vuelos.listaVuelos.getSize(); i++) {
+                especial = especial + Lhead.getElement().getColaEspecial().getSize();
+                oro = oro + Lhead.getElement().getColaOro().getSize();
+                platino = platino +Lhead.getElement().getColaPlatino().getSize();
+                economico = economico + Lhead.getElement().getColaEconomico().getSize();
+                Lhead = Lhead.getNext();
+            }
+
+        }
+        if ("heap".equals(Vuelos.PrioridadSeleccionada)) {
+            listasimple.Nodo headL = Vuelos.listaVuelos.getHead().getNext();
+            for (int i = 0; i < Vuelos.listaVuelos.getSize(); i++) {
+
+                especial = especial + headL.getElement().getHeapPersonas().Cantidad(1);
+
+                oro = oro + headL.getElement().getHeapPersonas().Cantidad(2);
+
+                platino = platino + headL.getElement().getHeapPersonas().Cantidad(3);
+
+                economico = economico + headL.getElement().getHeapPersonas().Cantidad(4);
+                
+                headL = headL.getNext();
+            }
+        
+    }
+        return "La cantidad de especial: "+especial+"\n"+"La cantidad de oro: "+oro+"\n"+"La cantidad de platino: "+platino+"\n"+"La cantidad de economico: "+economico;
+    }
+    
+    public static String onboardEstadistica() {
+        int especial = 0;
+        int oro = 0;
+        int platino = 0;
+        int economico = 0;
+        String finalS = "";
+        if ("cola".equals(Vuelos.PrioridadSeleccionada)) {
+            listasimple.Nodo Lhead = Vuelos.listaVuelos.getHead().getNext();
+            System.out.println(Vuelos.listaVuelos.getSize());
+
+            for (int i = 0; i < Vuelos.listaVuelos.getSize(); i++) {
+                if (Lhead.getElement().getPuerta() != 0) {
+                    especial = especial + Lhead.getElement().getColaEspecial().getSize();
+                    oro = oro + Lhead.getElement().getColaOro().getSize();
+                    platino = platino + Lhead.getElement().getColaPlatino().getSize();
+                    economico = economico + Lhead.getElement().getColaEconomico().getSize();
+                    int total = especial + oro + platino + economico;
+                    finalS = finalS + "\n" + "La puerta " + Lhead.getElement().getPuerta() + " tiene " + total + " personas";
+                }
+                Lhead = Lhead.getNext();
+                especial = 0;
+                oro = 0;
+                platino = 0;
+                economico = 0;
+            }
+
+        }
+        if ("heap".equals(Vuelos.PrioridadSeleccionada)) {
+            listasimple.Nodo headL = Vuelos.listaVuelos.getHead().getNext();
+            for (int i = 0; i < Vuelos.listaVuelos.getSize(); i++) {
+                if (headL.getElement().getPuerta() != 0) {
+                    especial = especial + headL.getElement().getHeapPersonas().Cantidad(1);
+
+                    oro = oro + headL.getElement().getHeapPersonas().Cantidad(2);
+
+                    platino = platino + headL.getElement().getHeapPersonas().Cantidad(3);
+
+                    economico = economico + headL.getElement().getHeapPersonas().Cantidad(4);
+                    int total = especial + oro + platino + economico;
+                    finalS = finalS + "\n" + "La puerta " + headL.getElement().getPuerta() + " tiene " + total + " personas";
+                }
+
+                headL = headL.getNext();
+                especial = 0;
+                oro = 0;
+                platino = 0;
+                economico = 0;
+            }
+
+        }
+        return finalS;
+    }
+    
 }

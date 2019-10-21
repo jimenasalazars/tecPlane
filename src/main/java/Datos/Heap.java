@@ -293,5 +293,14 @@ public class Heap {
             return current.getValor();
         }
     }
+    
+    public int Cantidad (int value){
+       int contador =0; 
+       Heap copia = this;
+       while (copia.delete(value)==true){
+           contador++;  
+       }
+       return contador;
+    }
 
 }
