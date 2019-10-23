@@ -58,6 +58,11 @@ public class ControlerJ {
         Vuelos.listaVuelos.insert(vuelo2);
         Vuelos.listaVuelos.insert(vuelo1);*/
         
+        Vuelos.especiales = 8;
+        Vuelos.oros = 8;
+        Vuelos.platinos = 8;
+        Vuelos.economicos = 8;
+        
         Vuelos vue1 = new Vuelos("jeje", true, "Guatemala");
         //vue1.setPuerta(2);
         Personas per1 = new Personas("Pedro", "dfghjk", 8745, "bhnjm", "CR", "Guatemala", 4);
@@ -286,11 +291,14 @@ public class ControlerJ {
             if (vueloTemp.getElement().getPuerta()==puerta){
                 Vuelos.listaVuelos.setCurrent(vueloTemp);
                 Vuelos.listaVuelos.remove();
+                break;
             }
             else{
                 vueloTemp = vueloTemp.getNext();
-            }
+            }   
         }
+        vueloTemp = Vuelos.listaVuelos.getHead().getNext();
+        //Vuelos.listaVuelos.setCurrent(vueloTemp);
         for (int i = 0; i < Vuelos.listaVuelos.getSize() ; i++) {
             if (vueloTemp.getElement().getPuerta()==0){
                 vueloTemp.getElement().setPuerta(puerta);
@@ -437,5 +445,105 @@ public class ControlerJ {
         }
         return finalS;
     }
+    public static float promedioComentarios(){
+        Comentarios.Nodo headC = Vuelos.comentarios.getHead().getNext();
+        float sumatoria=0;
+        for (int i=0; i<Vuelos.comentarios.getSize(); i++){
+            sumatoria = sumatoria + headC.getElement();
+            headC = headC.getNext();
+        }
+        return sumatoria/Vuelos.comentarios.getSize();
+    }
     
+    public static String tiempoporplandelealtad(){
+        int especial =0;
+        int oro=0;
+        int platino=0;
+        int economico=0;
+        
+        if ("cola".equals(Vuelos.PrioridadSeleccionada)) {
+            listasimple.Nodo Lhead = Vuelos.listaVuelos.getHead().getNext();
+            System.out.println(Vuelos.listaVuelos.getSize());
+
+            for (int i = 0; i < Vuelos.listaVuelos.getSize(); i++) {
+                if (Lhead.getElement().getPuerta() != 0) {
+                    especial = especial + Lhead.getElement().getColaEspecial().getSize()*Vuelos.rangoTiempo;
+                    oro = oro + Lhead.getElement().getColaOro().getSize()*Vuelos.rangoTiempo;
+                    platino = platino + Lhead.getElement().getColaPlatino().getSize()*Vuelos.rangoTiempo;
+                    economico = economico + Lhead.getElement().getColaEconomico().getSize()*Vuelos.rangoTiempo;
+                }
+                Lhead = Lhead.getNext();
+            }
+
+        }
+        if ("heap".equals(Vuelos.PrioridadSeleccionada)) {
+            listasimple.Nodo headL = Vuelos.listaVuelos.getHead().getNext();
+            for (int i = 0; i < Vuelos.listaVuelos.getSize(); i++) {
+                if (headL.getElement().getPuerta() != 0) {
+                    especial = especial + headL.getElement().getHeapPersonas().Cantidad(1)*Vuelos.rangoTiempo;
+
+                    oro = oro + headL.getElement().getHeapPersonas().Cantidad(2)*Vuelos.rangoTiempo;
+
+                    platino = platino + headL.getElement().getHeapPersonas().Cantidad(3)*Vuelos.rangoTiempo;
+
+                    economico = economico + headL.getElement().getHeapPersonas().Cantidad(4)*Vuelos.rangoTiempo;
+                    
+                }
+
+                headL = headL.getNext();
+
+            }
+        
+        
+    }
+   return "Tiempo de especiales "+especial+" segundos"+"\n"
+                +"Tiempo de oro "+oro+" segundos"+"\n"
+                +"Tiempo de platino "+" segundos"+platino+"\n"
+                +"Tiempo de economico "+economico+" segundos"; 
+}
+    
+    public static String tiemposalida(){
+        int especial =0;
+        int oro=0;
+        int platino=0;
+        int economico=0;
+        
+        if ("cola".equals(Vuelos.PrioridadSeleccionada)) {
+            listasimple.Nodo Lhead = Vuelos.listaVuelos.getHead().getNext();
+            System.out.println(Vuelos.listaVuelos.getSize());
+
+            for (int i = 0; i < Vuelos.listaVuelos.getSize(); i++) {
+                if (Lhead.getElement().getPuerta() != 0) {
+                    especial = especial + Lhead.getElement().getColaEspecial().getSize()*Vuelos.rangoTiempo;
+                    oro = oro + Lhead.getElement().getColaOro().getSize()*Vuelos.rangoTiempo;
+                    platino = platino + Lhead.getElement().getColaPlatino().getSize()*Vuelos.rangoTiempo;
+                    economico = economico + Lhead.getElement().getColaEconomico().getSize()*Vuelos.rangoTiempo;
+                }
+                Lhead = Lhead.getNext();
+            }
+
+        }
+        if ("heap".equals(Vuelos.PrioridadSeleccionada)) {
+            listasimple.Nodo headL = Vuelos.listaVuelos.getHead().getNext();
+            for (int i = 0; i < Vuelos.listaVuelos.getSize(); i++) {
+                if (headL.getElement().getPuerta() != 0) {
+                    especial = especial + headL.getElement().getHeapPersonas().Cantidad(1)*Vuelos.rangoTiempo;
+
+                    oro = oro + headL.getElement().getHeapPersonas().Cantidad(2)*Vuelos.rangoTiempo;
+
+                    platino = platino + headL.getElement().getHeapPersonas().Cantidad(3)*Vuelos.rangoTiempo;
+
+                    economico = economico + headL.getElement().getHeapPersonas().Cantidad(4)*Vuelos.rangoTiempo;
+                    
+                }
+
+                headL = headL.getNext();
+
+            }
+        
+        
+    }
+   int total = especial+oro+platino+economico;
+   return "El tiempo promedio total de espera de salida es de "+ total + " segundos."; 
+}
 }

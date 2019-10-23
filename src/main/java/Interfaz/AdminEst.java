@@ -5,6 +5,8 @@
  */
 package Interfaz;
 
+import Datos.Comentarios;
+import Datos.Vuelos;
 import Logica.ControlerJ;
 import javax.swing.JOptionPane;
 
@@ -108,6 +110,11 @@ public class AdminEst extends javax.swing.JFrame {
         });
 
         consultPerCola.setText("Consultar");
+        consultPerCola.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultPerColaActionPerformed(evt);
+            }
+        });
 
         consultPerPlan.setText("Consultar");
         consultPerPlan.addActionListener(new java.awt.event.ActionListener() {
@@ -127,6 +134,11 @@ public class AdminEst extends javax.swing.JFrame {
         jLabel8.setText("Comentarios realizados");
 
         jButton1.setText("Consultar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -239,20 +251,21 @@ public class AdminEst extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void consultAsientPerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultAsientPerActionPerformed
-        // TODO add your handling code here:
+        String dato = "La cantidad de asientos especiales es: "+Vuelos.especiales+"\n"
+                +"La cantidad de asientos oro es: "+Vuelos.oros+"\n"
+                +"La cantidad de asientos platino es: "+Vuelos.platinos+"\n"
+                +"La cantidad de asientos economicos es: "+Vuelos.economicos;
+        JOptionPane.showMessageDialog(null, dato, "Asientos por tipo de persona", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_consultAsientPerActionPerformed
 
     private void consultPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultPlanActionPerformed
-        String dato = "Tiempo de especiales"+0000+"\n"
-                +"Tiempo de oro"+0000+"\n"
-                +"Tiempo de platino"+0000+"\n"
-                +"Tiempo de economico"+0000+"\n";
+        String dato = ControlerJ.tiempoporplandelealtad();
         JOptionPane.showMessageDialog(null, dato, "Tiempo de espera por plan de lealtad", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_consultPlanActionPerformed
 
     private void consultSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultSalidaActionPerformed
-        String dato = "El tiempo de espera de promedio total"+0000;
-        JOptionPane.showMessageDialog(null, dato, "Tiempo de espera por plan de lealtad", JOptionPane.INFORMATION_MESSAGE);
+        String dato = ControlerJ.tiemposalida();
+        JOptionPane.showMessageDialog(null, dato, "Tiempo de espera de salida", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_consultSalidaActionPerformed
 
     private void consultPerPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultPerPlanActionPerformed
@@ -264,6 +277,20 @@ public class AdminEst extends javax.swing.JFrame {
         String dato= ControlerJ.onboardEstadistica();
         JOptionPane.showMessageDialog(null, dato, "Personas por puerta", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_consultPerPuertaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        float elemento = ControlerJ.promedioComentarios();
+        JOptionPane.showMessageDialog(null, "El promedio de los resultados de los comentarios es: "+elemento, "Personas por puerta", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void consultPerColaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultPerColaActionPerformed
+        String dato = "";
+        Comentarios.Nodo head = Vuelos.Nsalida.getHead().getNext();
+        for (int i =1; i<Vuelos.Nsalida.getSize()+1;i++){
+            dato = dato+"\n"+"En la salida "+i+" hubieron "+head.getElement()+" personas.";
+        }
+        JOptionPane.showMessageDialog(null, dato, "Personas por salida", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_consultPerColaActionPerformed
 
     /**
      * @param args the command line arguments

@@ -16,6 +16,12 @@ public class Vuelos {
     public static int disminucionPuertas=0;
     public static listasimple listaVuelos = new listasimple();
     public static Comentarios comentarios = new Comentarios();
+    public static int especiales = 0;
+    public static int oros = 0;
+    public static int platinos = 0;
+    public static int economicos = 0;
+    public static float Npersonas = 0;
+    public static Comentarios Nsalida = new Comentarios();
     public static int puertaSeleccionada = 0;
     
     

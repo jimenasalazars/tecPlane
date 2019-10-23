@@ -64,6 +64,11 @@ public class Administracion extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jButton4.setText("Volver");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,6 +132,13 @@ public class Administracion extends javax.swing.JFrame {
         dispose();
         ventSiguiente.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        SeleccionDeModulos ventSiguiente = new SeleccionDeModulos();
+        ventSiguiente.setTitle("Seleccion de Modulos");
+        dispose();
+        ventSiguiente.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -236,8 +236,12 @@ public class listasimple {
 
         //en temp se va a almacenar el nodo ANTERIOR al que se quiere borrar
         Nodo temp = this.head;
-        while (temp.getNext() != this.current) {
-            temp = temp.getNext();
+        for (int i = 0; i < this.size-1; i++) {
+            if (temp.getNext() != this.current) {
+                temp = temp.getNext();
+            } else {
+                break;
+            }
         }
         //borrar la referencia al nodo actual
         temp.setNext(this.current.getNext());
@@ -253,7 +257,7 @@ public class listasimple {
         //disminuir el tama�o
         this.size--;
     }
-
+    
     /**
      * método para vaciar la lista
      */

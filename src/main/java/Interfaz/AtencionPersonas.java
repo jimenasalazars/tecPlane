@@ -101,6 +101,7 @@ public class AtencionPersonas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Vuelos.Npersonas = 0;
         ControlerJ.AleatorioEspecial(Vuelos.puertaSeleccionada, true);
         Timer timer = new Timer();
         
@@ -110,12 +111,13 @@ public class AtencionPersonas extends javax.swing.JFrame {
                 String info = ControlerJ.mostrarInfoPersona(Vuelos.puertaSeleccionada);
                 label1.setText(info);
                 if ("Avión vacío".equals(info)) {
+                    Vuelos.Nsalida.insert(Vuelos.Npersonas);
                     timer.cancel();
                     timer.purge();
                     ControlerJ.AleatorioEspecial(Vuelos.puertaSeleccionada, false);
                     return;
                 }
-                
+                Vuelos.Npersonas= Vuelos.Npersonas+1;
                 String comentario = JOptionPane.showInputDialog("Ingrese un comentario");
                 System.out.println(comentario);
                 try {
@@ -128,6 +130,7 @@ public class AtencionPersonas extends javax.swing.JFrame {
         };
         int repeticion = (Vuelos.rangoTiempo)*1000;
         timer.schedule(task, 2000, repeticion);
+        
         
         
     }//GEN-LAST:event_jButton3ActionPerformed
