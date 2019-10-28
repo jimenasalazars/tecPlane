@@ -3,38 +3,38 @@ package Datos;
 /**
  *
  * @author samuel y jimena
- * @param <T>
+ * @param 
  */
-public class ColaG <T>{
-        private Node<T> front;
-	private Node<T> rear;
+    public class ColaG {
+        private Node front;
+	private Node rear;
 	private int size;
 /**
  * metódo para obtener el primer elemento de la cola 
  * @return 
  */
-    public Node<T> getFront() {
+    public Node getFront() {
         return front;
     }
 /**
  * metodo para redefinir el valor del primer elemento de la cola
  * @param front 
  */
-    public void setFront(Node<T> front) {
+    public void setFront(Node front) {
         this.front = front;
     }
 /**
  * metodo para obtener el ultimo de la cola
  * @return 
  */
-    public Node<T> getRear() {
+    public Node getRear() {
         return rear;
     }
 /**
  * metodo para cambiar el valor del ultimo nodo de la cola
  * @param rear 
  */
-    public void setRear(Node<T> rear) {
+    public void setRear(Node rear) {
         this.rear = rear;
     }
 /**
@@ -56,7 +56,7 @@ public class ColaG <T>{
  * constructor de la cola
  */
 	public ColaG(){
-		this.front = new Node<>();
+		this.front = new Node();
 		this.rear = this.front;
 		this.size = 0;
 	}
@@ -64,8 +64,8 @@ public class ColaG <T>{
  * metodo para agregar un elemento a la cola
  * @param element 
  */	
-	public void enqueue(T element){
-		this.rear.setNext(new Node<T>(element, null));
+	public void enqueue(Personas element){
+		this.rear.setNext(new Node(element, null));
 		this.rear = rear.getNext();
 		this.size++;
 	}
@@ -73,13 +73,13 @@ public class ColaG <T>{
  * metodo para sacar un elemento de la cola
  * @return 
  */	
-	public T dequeue(){
+	public Personas dequeue(){
 		if(this.size == 0){
 			System.out.println("Cola Vacia");
 			return null;
 		}
-		T temp = (T) this.front.getNext().getElement();
-		Node<T> nTemp = this.front.getNext();
+		Personas temp = (Personas) this.front.getNext().getElement();
+		Node nTemp = this.front.getNext();
 		this.front.setNext(nTemp.getNext());
 		if (this.rear == nTemp){
 			this.rear = this.front;
@@ -91,7 +91,7 @@ public class ColaG <T>{
  * metodo para obrener el elemento del primer nodo
  * @return 
  */	
-	public Object first(){
+	public Personas first(){
 		if(this.size == 0){
 			System.out.println("Cola vacia");
 			return null;
@@ -109,7 +109,7 @@ public class ColaG <T>{
  * metodo para vaciar la cola
  */	
 	public void clear(){
-		this.front = new Node<>();
+		this.front = new Node();
 		this.rear = this.front;
 		this.size = 0;
 	}
@@ -120,7 +120,7 @@ public class ColaG <T>{
         @Override
 	public String toString(){
 		String result = "*Cola*\n";
-		Node<T> tFront = this.front;
+		Node tFront = this.front;
 		int tSize = this.size;
 		while(tSize != 0){
 			result+= tFront.getNext().getElement() + " ";
@@ -136,18 +136,18 @@ public class ColaG <T>{
 		if (this.size == 0) {
 			System.out.println("Cola vacia");
 		} else {
-			Node<T> current = this.front.getNext();
-			Node<T> temp = null;
-			Node<T> newRear = null;
+			Node current = this.front.getNext();
+			Node temp = null;
+			Node newRear = null;
 			while (current != null) {
 				if (current == this.front.getNext()){
-					temp = new Node<T>(current.getElement(), null);
+					temp = new Node(current.getElement(), null);
 					newRear = temp;
 				} else if (current == this.rear) {
-					temp = new Node<T>(current.getElement(), temp);
+					temp = new Node(current.getElement(), temp);
 					this.front.setNext(temp);
 				} else {
-					temp = new Node<T>(current.getElement(), temp);
+					temp = new Node(current.getElement(), temp);
 				}
 				current = current.getNext();
 			}
@@ -161,9 +161,9 @@ public class ColaG <T>{
 		if (this.size == 0) {
 			System.out.println("Cola vacia");
 		} else {
-			Node<T> next = this.front.getNext();
-			Node<T> afterNext = next.getNext();
-			Node<T> temp = null;
+			Node next = this.front.getNext();
+			Node afterNext = next.getNext();
+			Node temp = null;
 			
 			while (afterNext != null) {
 				if (next == this.front.getNext()){

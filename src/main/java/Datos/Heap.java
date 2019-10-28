@@ -60,6 +60,7 @@ public class Heap {
     }
     /* Atributos */
     private Nodo raiz;
+    private int size;
 
     /* Contructories */
     
@@ -74,7 +75,16 @@ public class Heap {
         this.raiz = raiz;
     }
 
+    
+    public int getSize() {
+        return size;
+    }
+
     /* Setters y Getters */
+    public void setSize(int size) {
+        this.size = size;
+    }
+
     public Nodo getRaiz() {
         return raiz;
     }
@@ -127,6 +137,7 @@ public class Heap {
 
     public void addNodo( Personas nodo ) {
         this.addNodo( new Nodo(nodo) , this.raiz );
+        this.size = this.size+1;
     }
     
     public boolean delete(int value){
@@ -240,6 +251,56 @@ public class Heap {
         }
         return successor;
     }
-
+    
+    public Personas Bpersonas (int value){
+        
+       Personas per = new Personas();
+       per.setNombre("No encontrado");
+        
+        Nodo current = this.raiz;
+        Nodo parent = this.raiz;
+        boolean isLeftChild = false;
+        while(current.getValor().getClase() != value){
+            parent = current;
+            if(value < current.getValor().getClase()){
+                // Move to the left if searched value is less
+                current = current.hojaIzquierda;
+                isLeftChild = true;
+            }
+            else{
+                // Move to the right if searched value is >=
+                current = current.hojaDerecha;
+                isLeftChild = false;
+            }
+            if(current == null){
+                return per;
+            }
+        }
+        if(current.hojaIzquierda == null && current.hojaDerecha == null){
+            return current.getValor();
+        }
+        // Node to be deleted has one child case
+        // Node to be deleted has right child
+        else if(current.hojaIzquierda == null){
+            return current.getValor();
+        }
+        // Node to be deleted has left child
+        else if(current.hojaDerecha == null){
+            return current.getValor();
+        }
+        // Node to be deleted has two children case
+        else{
+            return current.getValor();
+        }
+    }
+    
+    public int Cantidad (int value){
+       int contador =0; 
+       Heap copia = this;
+       while (copia.delete(value)==true){
+           contador++;  
+       }
+       return contador;
+    }
 
 }

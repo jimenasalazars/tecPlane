@@ -5,6 +5,11 @@
  */
 package Interfaz;
 
+import Logica.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Usuario
@@ -73,6 +78,11 @@ public class ConfiguracionInicial extends javax.swing.JFrame {
         });
 
         jTextField4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel6.setText("Mínimo");
@@ -130,7 +140,7 @@ public class ConfiguracionInicial extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
+                .addContainerGap(24, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(27, 27, 27)
                 .addComponent(jLabel2)
@@ -150,8 +160,8 @@ public class ConfiguracionInicial extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(49, 49, 49)
                 .addComponent(jButton3)
                 .addGap(64, 64, 64))
@@ -161,15 +171,57 @@ public class ConfiguracionInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        SeleccionDeModulos ventSiguiente = new SeleccionDeModulos();
-        ventSiguiente.setTitle("Seleccion de Modulos");
-        dispose();
-        ventSiguiente.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+        try {
+            if (jTextField1.getText().equals("") || jTextField2.getText().equals("") || jTextField3.getText().equals("") || jTextField4.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Rellene todos los espacios", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                String cadena = jTextField1.getText();
+                cadena.toLowerCase();
+                if ("cola".equals(cadena) || "heap".equals(cadena)) {
+                    String puertas = jTextField2.getText();
+                    String tiempo = jTextField4.getText();
+                    int PuertasIngresadas = Integer.parseInt(puertas);
+                    int tiempoIngresado = Integer.parseInt(tiempo);
+                    Pattern patron = Pattern.compile("[^A-Za-z ]");
+                    Matcher encaja = (patron.matcher(cadena));
 
+                    if (!encaja.find()) {
+                        if (ControlerJ.isNumeric(puertas)) {
+                            if (ControlerJ.isNumeric(puertas)) {
+                                ControlerJ.setConfInicial(cadena, PuertasIngresadas, tiempoIngresado);
+                                AsignacionVuelos ventSiguiente = new AsignacionVuelos();
+                                ventSiguiente.setTitle("Asignacion de Vuelos");
+                                dispose();
+                                ventSiguiente.setVisible(true);
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Ingrese solo valores numéricos", "Error", JOptionPane.ERROR_MESSAGE);
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Ingrese solo valores numéricos", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Ingrese solo letras", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ingrese solo las estructuras cola o heap", "Error", JOptionPane.ERROR_MESSAGE);
+
+                }
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Verifique los datos ingresado", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+    
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
 
     /**
      * @param args the command line arguments

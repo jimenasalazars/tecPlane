@@ -5,6 +5,11 @@
  */
 package Interfaz;
 
+import Datos.Comentarios;
+import Datos.Vuelos;
+import Logica.ControlerJ;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Usuario
@@ -51,7 +56,6 @@ public class AdminEst extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(579, 562));
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
@@ -76,6 +80,11 @@ public class AdminEst extends javax.swing.JFrame {
         jLabel7.setText("Estadísticas");
 
         consultPlan.setText("Consultar");
+        consultPlan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultPlanActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jButton2.setText("Volver");
@@ -86,12 +95,32 @@ public class AdminEst extends javax.swing.JFrame {
         });
 
         consultSalida.setText("Consultar");
+        consultSalida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultSalidaActionPerformed(evt);
+            }
+        });
 
         consultPerPuerta.setText("Consultar");
+        consultPerPuerta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultPerPuertaActionPerformed(evt);
+            }
+        });
 
         consultPerCola.setText("Consultar");
+        consultPerCola.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultPerColaActionPerformed(evt);
+            }
+        });
 
         consultPerPlan.setText("Consultar");
+        consultPerPlan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultPerPlanActionPerformed(evt);
+            }
+        });
 
         consultAsientPer.setText("Consultar");
         consultAsientPer.addActionListener(new java.awt.event.ActionListener() {
@@ -104,6 +133,11 @@ public class AdminEst extends javax.swing.JFrame {
         jLabel8.setText("Comentarios realizados");
 
         jButton1.setText("Consultar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,58 +148,52 @@ public class AdminEst extends javax.swing.JFrame {
                 .addComponent(promedioEspecial, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(88, 88, 88)
                 .addComponent(promedioOro, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(consultPlan)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(promedioVIP, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(190, 190, 190))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(83, 83, 83)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel4))
-                            .addGap(110, 110, 110))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel1))
-                            .addGap(138, 138, 138)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(consultPerPlan)
-                        .addGap(262, 262, 262))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(consultSalida)
-                        .addGap(258, 258, 258))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(consultPlan)
-                        .addGap(254, 254, 254))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel7)
-                        .addGap(242, 242, 242))))
+                        .addGap(247, 247, 247))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addGap(119, 119, 119))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(consultPerPlan)
+                        .addGap(250, 250, 250))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(consultPerPuerta)
+                        .addGap(251, 251, 251))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(consultPerCola)
+                        .addGap(253, 253, 253))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(210, 210, 210)
-                        .addComponent(jLabel8))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(258, 258, 258)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(261, 261, 261)
+                        .addComponent(consultSalida))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(260, 260, 260)
                         .addComponent(consultAsientPer))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(262, 262, 262)
-                        .addComponent(consultPerCola))
+                        .addGap(263, 263, 263)
+                        .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(262, 262, 262)
-                        .addComponent(consultPerPuerta)))
+                        .addGap(209, 209, 209)
+                        .addComponent(jLabel8)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -173,42 +201,44 @@ public class AdminEst extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(promedioOro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(promedioEspecial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(promedioVIP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
-                .addGap(9, 9, 9)
+
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+
                 .addComponent(consultPlan)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(consultSalida)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(consultPerPlan)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(consultPerPuerta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(consultPerCola, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(consultAsientPer)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
-                .addGap(11, 11, 11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addGap(38, 38, 38))
+                .addGap(70, 70, 70))
         );
 
         pack();
@@ -222,8 +252,46 @@ public class AdminEst extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void consultAsientPerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultAsientPerActionPerformed
-        // TODO add your handling code here:
+        String dato = "La cantidad de asientos especiales es: "+Vuelos.especiales+"\n"
+                +"La cantidad de asientos oro es: "+Vuelos.oros+"\n"
+                +"La cantidad de asientos platino es: "+Vuelos.platinos+"\n"
+                +"La cantidad de asientos economicos es: "+Vuelos.economicos;
+        JOptionPane.showMessageDialog(null, dato, "Asientos por tipo de persona", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_consultAsientPerActionPerformed
+
+    private void consultPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultPlanActionPerformed
+        String dato = ControlerJ.tiempoporplandelealtad();
+        JOptionPane.showMessageDialog(null, dato, "Tiempo de espera por plan de lealtad", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_consultPlanActionPerformed
+
+    private void consultSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultSalidaActionPerformed
+        String dato = ControlerJ.tiemposalida();
+        JOptionPane.showMessageDialog(null, dato, "Tiempo de espera de salida", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_consultSalidaActionPerformed
+
+    private void consultPerPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultPerPlanActionPerformed
+        String dato= ControlerJ.checinEstadistica();
+        JOptionPane.showMessageDialog(null, dato, "Personas por plan de lealtad", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_consultPerPlanActionPerformed
+
+    private void consultPerPuertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultPerPuertaActionPerformed
+        String dato= ControlerJ.onboardEstadistica();
+        JOptionPane.showMessageDialog(null, dato, "Personas por puerta", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_consultPerPuertaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        float elemento = ControlerJ.promedioComentarios();
+        JOptionPane.showMessageDialog(null, "El promedio de los resultados de los comentarios es: "+elemento, "Personas por puerta", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void consultPerColaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultPerColaActionPerformed
+        String dato = "";
+        Comentarios.Nodo head = Vuelos.Nsalida.getHead().getNext();
+        for (int i =1; i<Vuelos.Nsalida.getSize()+1;i++){
+            dato = dato+"\n"+"En la salida "+i+" hubieron "+head.getElement()+" personas.";
+        }
+        JOptionPane.showMessageDialog(null, dato, "Personas por salida", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_consultPerColaActionPerformed
 
     /**
      * @param args the command line arguments
