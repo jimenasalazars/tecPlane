@@ -5,6 +5,13 @@
  */
 package Interfaz;
 
+import Datos.*;
+import Logica.*;
+import javax.swing.JOptionPane;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author samue
@@ -27,19 +34,36 @@ public class AtencionPersonas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        label1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("textoo");
-
         jButton1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jButton1.setText("Volver");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jButton2.setText("Cerrar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jButton3.setText("Iniciar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -49,12 +73,14 @@ public class AtencionPersonas extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 17, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3)
+                        .addGap(128, 128, 128)
                         .addComponent(jButton2)))
                 .addContainerGap())
         );
@@ -64,14 +90,62 @@ public class AtencionPersonas extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(310, 310, 310))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Vuelos.Npersonas = 0;
+        ControlerJ.AleatorioEspecial(Vuelos.puertaSeleccionada, true);
+        Timer timer = new Timer();
+        
+        TimerTask task= new TimerTask() {
+            @Override
+            public void run() {
+                String info = ControlerJ.mostrarInfoPersona(Vuelos.puertaSeleccionada);
+                label1.setText(info);
+                if ("Avión vacío".equals(info)) {
+                    Vuelos.Nsalida.insert(Vuelos.Npersonas);
+                    timer.cancel();
+                    timer.purge();
+                    ControlerJ.AleatorioEspecial(Vuelos.puertaSeleccionada, false);
+                    return;
+                }
+                Vuelos.Npersonas= Vuelos.Npersonas+1;
+                String comentario = JOptionPane.showInputDialog("Ingrese un comentario");
+                System.out.println(comentario);
+                try {
+                    float comentarioFinal = ControlerJ.NaturalLanguage(comentario);
+                    Vuelos.comentarios.append(comentarioFinal);
+                } catch (Exception ex) {
+                    Logger.getLogger(AtencionPersonas.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
+        int repeticion = (Vuelos.rangoTiempo)*1000;
+        timer.schedule(task, 2000, repeticion);
+        
+        
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String newPuerta = ControlerJ.cerrarPuerta(Vuelos.puertaSeleccionada);
+        JOptionPane.showMessageDialog(null, newPuerta, "Nueva Puerta", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        SeleccionDeModulos ventSiguiente = new SeleccionDeModulos();
+        ventSiguiente.setTitle("Seleccion de Modulos");
+        dispose();
+        ventSiguiente.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,6 +188,7 @@ public class AtencionPersonas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel label1;
     // End of variables declaration//GEN-END:variables
 }

@@ -21,6 +21,19 @@ public class Controlador {
         int randomNumber = r.nextInt(seat.length);
 
         Personas per = new Personas(nombre, fechaDeNacimiento, númeroDePasaporte, nacionalidad, lugarDeOrige, lugarDeDestino, clase);
+        
+        if (clase == 1) {
+            Vuelos.especiales = Vuelos.especiales + 1;
+        }
+        if (clase == 2) {
+            Vuelos.oros = Vuelos.oros + 1;
+        }
+        if (clase == 3) {
+            Vuelos.platinos = Vuelos.platinos + 1;
+        }
+        if (clase == 4) {
+            Vuelos.economicos = Vuelos.economicos + 1;
+        }
 
         if ("cola".equals(Vuelos.PrioridadSeleccionada)) {
             listasimple.Nodo Lhead = Vuelos.listaVuelos.getHead().getNext();

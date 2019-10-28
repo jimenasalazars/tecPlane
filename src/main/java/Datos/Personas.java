@@ -29,6 +29,9 @@ public class Personas {
         this.clase = clase;
     }
 
+    public Personas(){
+        
+    }
     public String getNombre() {
         return nombre;
     }

@@ -7,29 +7,27 @@ package Datos;
 
 /**
  *
- * @author samuel y jimena
- * 
+ * @author Usuario
  */
-
-public class listasimple {
+public class Comentarios {
     public class Nodo {
         //atributos
 
-        public Vuelos element;
+        public float element;
         public Nodo next;
 
         //Constructores
         public Nodo() {
-            this.element = null;
+            this.element = 0;
             this.next = null;
         }
 
-        public Nodo(Vuelos element) {
+        public Nodo(float element) {
             this.element = element;
             this.next = null;
         }
 
-        public Nodo(Vuelos element, Nodo next) {
+        public Nodo(float element, Nodo next) {
             this.element = element;
             this.next = next;
         }
@@ -40,7 +38,7 @@ public class listasimple {
          * @return
          */
 
-        public Vuelos getElement() {
+        public float getElement() {
             return this.element;
         }
 
@@ -49,7 +47,7 @@ public class listasimple {
          *
          * @param element
          */
-        public void setElement(Vuelos element) {
+        public void setElement(float element) {
             this.element = element;
         }
 
@@ -85,7 +83,7 @@ public class listasimple {
 	/**
 	 * Contructor predeterminado
 	 */
-	public listasimple() {
+	public Comentarios() {
 		this.head = new Nodo();
 		this.current = this.head;
 		this.tail = this.head;
@@ -98,7 +96,7 @@ public class listasimple {
      *
      * @param lista
      */
-    public listasimple(listasimple lista) {
+    public Comentarios(Comentarios lista) {
 
     }
 
@@ -188,7 +186,7 @@ public class listasimple {
      *
      * @return
      */
-    public Vuelos getVuelo() {
+    public float getVuelo() {
         return this.current.getElement();
     }
 
@@ -197,7 +195,7 @@ public class listasimple {
      *
      * @param element
      */
-    public void insert(Vuelos element) {
+    public void insert(float element) {
         //insertar en cualquier posici�n
         Nodo newNode = new Nodo(element, this.current.getNext());
         this.current.setNext(newNode);
@@ -217,7 +215,7 @@ public class listasimple {
      *
      * @param element
      */
-    public void append(Vuelos element) {
+    public void append(float element) {
         //siempre se pega al final de la lista
         Nodo newNode = new Nodo(element);
         this.tail.setNext(newNode);
@@ -236,12 +234,8 @@ public class listasimple {
 
         //en temp se va a almacenar el nodo ANTERIOR al que se quiere borrar
         Nodo temp = this.head;
-        for (int i = 0; i < this.size-1; i++) {
-            if (temp.getNext() != this.current) {
-                temp = temp.getNext();
-            } else {
-                break;
-            }
+        while (temp.getNext() != this.current) {
+            temp = temp.getNext();
         }
         //borrar la referencia al nodo actual
         temp.setNext(this.current.getNext());
@@ -257,7 +251,7 @@ public class listasimple {
         //disminuir el tama�o
         this.size--;
     }
-    
+
     /**
      * método para vaciar la lista
      */
@@ -272,7 +266,7 @@ public class listasimple {
      *
      * @return
      */
-    public Vuelos getElement() {
+    public float getElement() {
         return this.current.getElement();
     }
 
@@ -372,17 +366,17 @@ public class listasimple {
      * @param element
      * @return
      */
-    public int getPositionOfElement(Vuelos element) {
+    /**
+    public int getPositionOfElement(float element) {
         Nodo tempNode = this.head;
         int positions = -1;
         while (tempNode != null) {
-            if (tempNode.getElement() != null && tempNode.getElement().equals(element)) {
+            if (tempNode.getElement() > 0 && tempNode.getElement().equals(element)) {
                 return positions;
             }
             tempNode = tempNode.getNext();
             positions++;
         }
         return -1;
-    }
-    
+    }*/
 }

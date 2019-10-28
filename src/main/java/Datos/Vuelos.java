@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,7 +14,17 @@ public class Vuelos {
     public static String PrioridadSeleccionada = "";
     public static int rangoTiempo = 0;
     public static int cantPuertas = 0;
+    public static int disminucionPuertas=0;
     public static listasimple listaVuelos = new listasimple();
+    public static Comentarios comentarios = new Comentarios();
+    public static int especiales = 0;
+    public static int oros = 0;
+    public static int platinos = 0;
+    public static int economicos = 0;
+    public static float Npersonas = 0;
+    public static Comentarios Nsalida = new Comentarios();
+    public static int puertaSeleccionada = 0;
+    
     
     private int puerta;
     private String vuelo;
@@ -139,7 +150,30 @@ public class Vuelos {
     public static void setRangoTiempo(int rangoTiempo) {
         Vuelos.rangoTiempo = rangoTiempo;
     }
-    
-    
+
+    public static int getDisminucionPuertas() {
+        return disminucionPuertas;
+    }
+
+    public static void setDisminucionPuertas(int disminucionPuertas) {
+        Vuelos.disminucionPuertas = disminucionPuertas;
+    }
+
+    public static Comentarios getComentarios() {
+        return comentarios;
+    }
+
+    public static void setComentarios(Comentarios comentarios) {
+        Vuelos.comentarios = comentarios;
+    }
+
+    public static int getPuertaSeleccionada() {
+        return puertaSeleccionada;
+    }
+
+    public static void setPuertaSeleccionada(int puertaSeleccionada) {
+        Vuelos.puertaSeleccionada = puertaSeleccionada;
+    }
     
 }
+
