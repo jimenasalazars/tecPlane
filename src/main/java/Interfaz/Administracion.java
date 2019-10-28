@@ -108,8 +108,8 @@ public class Administracion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        AdminEst ventSiguiente = new AdminEst();
-        ventSiguiente.setTitle("Administracion");
+        AdminPuertas ventSiguiente = new AdminPuertas();
+        ventSiguiente.setTitle("Estadisticas");
         dispose();
         ventSiguiente.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -122,10 +122,11 @@ public class Administracion extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        AdminPuertas ventSiguiente = new AdminPuertas();
-        ventSiguiente.setTitle("Estadisticas");
+        AdminEst ventSiguiente = new AdminEst();
+        ventSiguiente.setTitle("Administracion");
         dispose();
         ventSiguiente.setVisible(true);
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
