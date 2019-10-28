@@ -131,6 +131,7 @@ public class Administracion extends javax.swing.JFrame {
         ventSiguiente.setTitle("Administracion");
         dispose();
         ventSiguiente.setVisible(true);
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
