@@ -91,7 +91,7 @@ package Datos;
  * metodo para obrener el elemento del primer nodo
  * @return 
  */	
-	public Object first(){
+	public Personas first(){
 		if(this.size == 0){
 			System.out.println("Cola vacia");
 			return null;

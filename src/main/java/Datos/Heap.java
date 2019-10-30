@@ -60,6 +60,12 @@ public class Heap {
     }
     /* Atributos */
     private Nodo raiz;
+    private int size;
+    
+    private int Nespecial;
+    private int Noro;
+    private int Nplatino;
+    private int Neconomico;
 
     /* Contructories */
     
@@ -74,7 +80,31 @@ public class Heap {
         this.raiz = raiz;
     }
 
+    public int getNespecial() {
+        return Nespecial;
+    }
+
+    public int getNoro() {
+        return Noro;
+    }
+
+    public int getNplatino() {
+        return Nplatino;
+    }
+
+    public int getNeconomico() {
+        return Neconomico;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
     /* Setters y Getters */
+    public void setSize(int size) {
+        this.size = size;
+    }
+
     public Nodo getRaiz() {
         return raiz;
     }
@@ -127,13 +157,26 @@ public class Heap {
 
     public void addNodo( Personas nodo ) {
         this.addNodo( new Nodo(nodo) , this.raiz );
+        if (nodo.getClase()==1){
+            this.Nespecial=this.Nespecial+1;
+        }
+        if (nodo.getClase()==2){
+            this.Noro=this.Noro+1;
+        }
+        if (nodo.getClase()==3){
+            this.Nplatino=this.Nplatino+1;
+        }
+        if (nodo.getClase()==4){
+            this.Neconomico=this.Neconomico+1;
+        }
+        this.size = this.size+1;
     }
     
     public boolean delete(int value){
         Nodo current = this.raiz;
         Nodo parent = this.raiz;
         boolean isLeftChild = false;
-        while(current.getValor().getClase() != value){
+                while(current.getValor().getClase() != value){
             parent = current;
             if(value < current.getValor().getClase()){
                 // Move to the left if searched value is less
@@ -217,6 +260,7 @@ public class Heap {
             }
             successor.hojaIzquierda = current.hojaIzquierda;
         }
+        this.setSize(this.size-1);
         return true;
     }
     private Nodo findSuccessor(Nodo node){
@@ -240,6 +284,156 @@ public class Heap {
         }
         return successor;
     }
+    
+    public Personas Bpersonas (int value){
 
+       Personas per = new Personas();
+       per.setNombre("No encontrado");
+       per.setClase(5);
+
+        Nodo current = this.raiz;
+        Nodo parent = this.raiz;
+        boolean isLeftChild = false;
+        
+        if (this.size==0){
+            return per;
+        }
+        while(current.getValor().getClase() != value){
+            parent = current;
+            if(value < current.getValor().getClase()){
+                // Move to the left if searched value is less
+                current = current.hojaIzquierda;
+                isLeftChild = true;
+            }
+            else{
+                // Move to the right if searched value is >=
+                current = current.hojaDerecha;
+                isLeftChild = false;
+            }
+            if(current == null){
+                return per;
+            }
+        }
+        if(current.hojaIzquierda == null && current.hojaDerecha == null){
+            return current.getValor();
+        }
+        // Node to be deleted has one child case
+        // Node to be deleted has right child
+        else if(current.hojaIzquierda == null){
+            return current.getValor();
+        }
+        // Node to be deleted has left child
+        else if(current.hojaDerecha == null){
+            return current.getValor();
+        }
+        // Node to be deleted has two children case
+        else{
+            return current.getValor();
+        }
+    }
+    
+    public int Cantidad (int value){
+       int contador =0; 
+       if (this.size==0){
+            return 0;
+        }
+       Heap copia = this;
+       while (copia.delete(value)==true){
+           contador++;  
+       }
+       return contador;
+    }
+    
+    public boolean existe(int value){
+        Heap copia = this;
+        Nodo current = copia.raiz;
+        Nodo parent = copia.raiz;
+        boolean isLeftChild = false;
+        while(current.getValor().getClase() != value){
+            parent = current;
+            if(value < current.getValor().getClase()){
+                // Move to the left if searched value is less
+                current = current.hojaIzquierda;
+                isLeftChild = true;
+            }
+            else{
+                // Move to the right if searched value is >=
+                current = current.hojaDerecha;
+                isLeftChild = false;
+            }
+            if(current == null){
+                return false;
+            }
+        }
+        // if reached here means node to be deleted is found
+        
+        // Leaf node deletion case
+        if(current.hojaIzquierda == null && current.hojaDerecha == null){
+            System.out.println("Leaf node deletion case");
+            // if root node is to be deleted
+            if(current == copia.raiz){
+                raiz = null;
+            }
+            // left child
+            else if(isLeftChild){
+                parent.hojaIzquierda = null;
+            }
+            // right child
+            else{
+                parent.hojaDerecha = null;
+            }
+        }
+        // Node to be deleted has one child case
+        // Node to be deleted has right child
+        else if(current.hojaIzquierda == null){
+            System.out.println("One right child deletion case");
+            // if root node is to be deleted
+            if(current == raiz){
+                raiz = current.hojaDerecha;
+            }
+            // if deleted node is left child
+            else if(isLeftChild){
+                parent.hojaIzquierda = current.hojaDerecha;
+            }
+            // if deleted node is right child
+            else{
+                parent.hojaDerecha = current.hojaDerecha;
+            }
+        }
+        // Node to be deleted has left child
+        else if(current.hojaDerecha == null){
+            System.out.println("One left child deletion case");
+            if(current == raiz){
+                raiz = current.hojaIzquierda;
+            }
+            // if deleted node is left child
+            else if(isLeftChild){
+                parent.hojaIzquierda = current.hojaIzquierda;
+            }
+            // if deleted node is right child
+            else{
+                parent.hojaDerecha = current.hojaIzquierda;
+            }
+        }
+        // Node to be deleted has two children case
+        else{
+            System.out.println("Two children deletion case");
+            // find in-order successor of the node to be deleted
+            Nodo successor = findSuccessor(current);
+            if(current == raiz){
+                raiz = successor;
+            }
+            // if deleted node is left child
+            else if(isLeftChild){
+                parent.hojaIzquierda = successor;
+            }
+            // if deleted node is right child
+            else{
+                parent.hojaDerecha = successor;
+            }
+            successor.hojaIzquierda = current.hojaIzquierda;
+        }
+        return true;
+    }
 
 }

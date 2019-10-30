@@ -1,18 +1,30 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package Datos;
-
+// cambios
 /**
  *
  * @author Usuario
  */
 public class Vuelos {
     public static String PrioridadSeleccionada = "";
-    
+    public static int rangoTiempo = 0;
+    public static int cantPuertas = 0;
+    public static int disminucionPuertas=0;
     public static listasimple listaVuelos = new listasimple();
+    public static Comentarios comentarios = new Comentarios();
+    public static int especiales = 0;
+    public static int oros = 0;
+    public static int platinos = 0;
+    public static int economicos = 0;
+    public static float Npersonas = 0;
+    public static Comentarios Nsalida = new Comentarios();
+    public static int puertaSeleccionada = 0;
+    
     
     private int puerta;
     private String vuelo;
@@ -29,6 +41,10 @@ public class Vuelos {
         this.vuelo = vuelo;
         this.abordo = abordo;
         this.Destino = Destino;
+    }
+
+    public Vuelos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public ColaG getColaEspecial() {
@@ -118,5 +134,46 @@ public class Vuelos {
     public static void setListaVuelos(listasimple listaVuelos) {
         Vuelos.listaVuelos = listaVuelos;
     }
+
+    public static int getCantPuertas() {
+        return cantPuertas;
+    }
+
+    public static void setCantPuertas(int cantPuertas) {
+        Vuelos.cantPuertas = cantPuertas;
+    }
+
+    public static int getRangoTiempo() {
+        return rangoTiempo;
+    }
+
+    public static void setRangoTiempo(int rangoTiempo) {
+        Vuelos.rangoTiempo = rangoTiempo;
+    }
+
+    public static int getDisminucionPuertas() {
+        return disminucionPuertas;
+    }
+
+    public static void setDisminucionPuertas(int disminucionPuertas) {
+        Vuelos.disminucionPuertas = disminucionPuertas;
+    }
+
+    public static Comentarios getComentarios() {
+        return comentarios;
+    }
+
+    public static void setComentarios(Comentarios comentarios) {
+        Vuelos.comentarios = comentarios;
+    }
+
+    public static int getPuertaSeleccionada() {
+        return puertaSeleccionada;
+    }
+
+    public static void setPuertaSeleccionada(int puertaSeleccionada) {
+        Vuelos.puertaSeleccionada = puertaSeleccionada;
+    }
     
 }
+
