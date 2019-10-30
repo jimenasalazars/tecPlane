@@ -156,8 +156,8 @@ public class Main {
         System.out.println(vue2.getHeapPersonas().Bpersonas(2).getNombre());
         System.out.println(vue2.getHeapPersonas().delete(2));
         System.out.println(vue2.getHeapPersonas().existe(2));*/
-        System.out.println(vue2.getHeapPersonas().Cantidad(2));
-        System.out.println(vue2.getHeapPersonas().Bpersonas(2).getNombre());
+        //System.out.println(vue2.getHeapPersonas().Cantidad(2));
+        //System.out.println(vue2.getHeapPersonas().Bpersonas(2).getNombre());
 
     }
 }
