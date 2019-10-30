@@ -255,7 +255,7 @@ public class AdminEst extends javax.swing.JFrame {
         String dato = "La cantidad de asientos especiales es: "+Vuelos.especiales+"\n"
                 +"La cantidad de asientos oro es: "+Vuelos.oros+"\n"
                 +"La cantidad de asientos platino es: "+Vuelos.platinos+"\n"
-                +"La cantidad de asientos economicos es: "+Vuelos.economicos;
+                +"La cantidad de asientos económicos es: "+Vuelos.economicos;
         JOptionPane.showMessageDialog(null, dato, "Asientos por tipo de persona", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_consultAsientPerActionPerformed
 

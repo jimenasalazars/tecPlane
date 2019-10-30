@@ -125,6 +125,7 @@ public class AdminPuertas extends javax.swing.JFrame {
         // boton aceptar
         try {
             int Npuertas = Integer.parseInt(jTextField1.getText());
+            Vuelos.setDisminucionPuertas(Vuelos.getCantPuertas() + Npuertas);
             Vuelos.setCantPuertas(Vuelos.getCantPuertas() + Npuertas);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Verifique los datos ingresado", "Error", JOptionPane.ERROR_MESSAGE);

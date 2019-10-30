@@ -122,25 +122,34 @@ public class ControlerJ {
                 }
                 if ("heap".equals(Vuelos.PrioridadSeleccionada)) {
                     Heap per =vueloTemp.getElement().getHeapPersonas();
-                    if (per.delete(1)!=false) {
+                    
+                    if (!"No encontrado".equals(per.Bpersonas(1).getNombre())) {
+                        
                         Personas dato = per.Bpersonas(1);
+                        String elemento = "Nombre: " + dato.getNombre() + " Pasaporte: " + dato.getNúmeroDePasaporte() + " Clase: Especial";
                         per.delete(1);
-                        return "Nombre: " + dato.getNombre() + " Pasaporte: " + dato.getNúmeroDePasaporte() + " Clase: Especial";
+                        return elemento;
                     }
-                    else if (per.delete(2)!=false) {
-                        Personas dato = per.Bpersonas(2);
+                    else if (!"No encontrado".equals(per.Bpersonas(2).getNombre())) {
+                        
+                        Personas dato2 = per.Bpersonas(2);
+                        String elemento2 = "Nombre: " + dato2.getNombre() + " Pasaporte: " + dato2.getNúmeroDePasaporte() + " Clase: Oro";
                         per.delete(2);
-                        return "Nombre: " + dato.getNombre() + " Pasaporte: " + dato.getNúmeroDePasaporte() + " Clase: Oro";
+                        return elemento2;
                     }
-                    else if (per.delete(3)!=false) {
-                        Personas dato = per.Bpersonas(3);
+                    else if (!"No encontrado".equals(per.Bpersonas(3).getNombre())) {
+                        
+                        Personas dato3 = per.Bpersonas(3);
+                        String elemento3 = "Nombre: " + dato3.getNombre() + " Pasaporte: " + dato3.getNúmeroDePasaporte() + " Clase: Platino";
                         per.delete(3);
-                        return "Nombre: " + dato.getNombre() + " Pasaporte: " + dato.getNúmeroDePasaporte() + " Clase: Plantino";
+                        return elemento3;
                     }
-                    else if (per.delete(4)!=false) {
-                        Personas dato = per.Bpersonas(4);
+                    else if (!"No encontrado".equals(per.Bpersonas(4).getNombre())) {
+                        
+                        Personas dato4 = per.Bpersonas(4);
+                        String elemento4 = "Nombre: " + dato4.getNombre() + " Pasaporte: " + dato4.getNúmeroDePasaporte() + " Clase: Economico";
                         per.delete(4);
-                        return "Nombre: " + dato.getNombre() + " Pasaporte: " + dato.getNúmeroDePasaporte() + " Clase: Económico";
+                        return elemento4;
                     }
                     else{
                         return "Avión vacío";
@@ -272,19 +281,19 @@ public class ControlerJ {
             listasimple.Nodo headL = Vuelos.listaVuelos.getHead().getNext();
             for (int i = 0; i < Vuelos.listaVuelos.getSize(); i++) {
 
-                especial = especial + headL.getElement().getHeapPersonas().Cantidad(1);
+                especial = especial + headL.getElement().getHeapPersonas().getNespecial();
 
-                oro = oro + headL.getElement().getHeapPersonas().Cantidad(2);
+                oro = oro + headL.getElement().getHeapPersonas().getNoro();
 
-                platino = platino + headL.getElement().getHeapPersonas().Cantidad(3);
+                platino = platino + headL.getElement().getHeapPersonas().getNplatino();
 
-                economico = economico + headL.getElement().getHeapPersonas().Cantidad(4);
+                economico = economico + headL.getElement().getHeapPersonas().getNeconomico();
                 
                 headL = headL.getNext();
             }
         
     }
-        return "La cantidad de especial: "+especial+"\n"+"La cantidad de oro: "+oro+"\n"+"La cantidad de platino: "+platino+"\n"+"La cantidad de economico: "+economico;
+        return "La cantidad de especial: "+especial+"\n"+"La cantidad de oro: "+oro+"\n"+"La cantidad de platino: "+platino+"\n"+"La cantidad de económico: "+economico;
     }
     
     public static String onboardEstadistica() {
@@ -318,13 +327,13 @@ public class ControlerJ {
             listasimple.Nodo headL = Vuelos.listaVuelos.getHead().getNext();
             for (int i = 0; i < Vuelos.listaVuelos.getSize(); i++) {
                 if (headL.getElement().getPuerta() != 0) {
-                    especial = especial + headL.getElement().getHeapPersonas().Cantidad(1);
+                    especial = especial + headL.getElement().getHeapPersonas().getNespecial();
 
-                    oro = oro + headL.getElement().getHeapPersonas().Cantidad(2);
+                    oro = oro + headL.getElement().getHeapPersonas().getNoro();
 
-                    platino = platino + headL.getElement().getHeapPersonas().Cantidad(3);
+                    platino = platino + headL.getElement().getHeapPersonas().getNplatino();
 
-                    economico = economico + headL.getElement().getHeapPersonas().Cantidad(4);
+                    economico = economico + headL.getElement().getHeapPersonas().getNeconomico();
                     int total = especial + oro + platino + economico;
                     finalS = finalS + "\n" + "La puerta " + headL.getElement().getPuerta() + " tiene " + total + " personas";
                 }
@@ -374,13 +383,13 @@ public class ControlerJ {
             listasimple.Nodo headL = Vuelos.listaVuelos.getHead().getNext();
             for (int i = 0; i < Vuelos.listaVuelos.getSize(); i++) {
                 if (headL.getElement().getPuerta() != 0) {
-                    especial = especial + headL.getElement().getHeapPersonas().Cantidad(1)*Vuelos.rangoTiempo;
+                    especial = especial + headL.getElement().getHeapPersonas().getNespecial()*Vuelos.rangoTiempo;
 
-                    oro = oro + headL.getElement().getHeapPersonas().Cantidad(2)*Vuelos.rangoTiempo;
+                    oro = oro + headL.getElement().getHeapPersonas().getNoro()*Vuelos.rangoTiempo;
 
-                    platino = platino + headL.getElement().getHeapPersonas().Cantidad(3)*Vuelos.rangoTiempo;
+                    platino = platino + headL.getElement().getHeapPersonas().getNplatino()*Vuelos.rangoTiempo;
 
-                    economico = economico + headL.getElement().getHeapPersonas().Cantidad(4)*Vuelos.rangoTiempo;
+                    economico = economico + headL.getElement().getHeapPersonas().getNeconomico()*Vuelos.rangoTiempo;
                     
                 }
 
@@ -390,10 +399,10 @@ public class ControlerJ {
         
         
     }
-   return "Tiempo de especiales "+especial+" segundos"+"\n"
-                +"Tiempo de oro "+oro+" segundos"+"\n"
-                +"Tiempo de platino "+" segundos"+platino+"\n"
-                +"Tiempo de economico "+economico+" segundos"; 
+   return "Tiempo de especiales "+especial+" segundos."+"\n"
+                +"Tiempo de oro "+oro+" segundos."+"\n"
+                +"Tiempo de platino "+platino+" segundos."+"\n"
+                +"Tiempo de económico "+economico+" segundos."; 
 }
     
     public static String tiemposalida(){
@@ -421,13 +430,13 @@ public class ControlerJ {
             listasimple.Nodo headL = Vuelos.listaVuelos.getHead().getNext();
             for (int i = 0; i < Vuelos.listaVuelos.getSize(); i++) {
                 if (headL.getElement().getPuerta() != 0) {
-                    especial = especial + headL.getElement().getHeapPersonas().Cantidad(1)*Vuelos.rangoTiempo;
+                    especial = especial + headL.getElement().getHeapPersonas().getNespecial()*Vuelos.rangoTiempo;
 
-                    oro = oro + headL.getElement().getHeapPersonas().Cantidad(2)*Vuelos.rangoTiempo;
+                    oro = oro + headL.getElement().getHeapPersonas().getNoro()*Vuelos.rangoTiempo;
 
-                    platino = platino + headL.getElement().getHeapPersonas().Cantidad(3)*Vuelos.rangoTiempo;
+                    platino = platino + headL.getElement().getHeapPersonas().getNplatino()*Vuelos.rangoTiempo;
 
-                    economico = economico + headL.getElement().getHeapPersonas().Cantidad(4)*Vuelos.rangoTiempo;
+                    economico = economico + headL.getElement().getHeapPersonas().getNeconomico()*Vuelos.rangoTiempo;
                     
                 }
 

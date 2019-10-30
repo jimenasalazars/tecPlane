@@ -131,18 +131,18 @@ public class Controlador {
             for (int i = 0; i < Vuelos.listaVuelos.getSize(); i++) {
                 if (Lhead.getElement().getPuerta() == numPuerta) {
                     return "La prioridad utilizada en todas las colas es Cola de prioridad" + "\n"
-                            + "La cantidsad de personas en especial es " + Lhead.getElement().getColaEspecial().getSize() + "\n"
+                            + "La cantidad de personas en especial es " + Lhead.getElement().getColaEspecial().getSize() + "\n"
                             + "La siguiente persona en especial por antender es " + Lhead.getElement().getColaEspecial().first().getNombre() + "\n"
-                            + "Los asientos asignads en especial van del 0 al " + Lhead.getElement().getColaEspecial().getSize() + "\n"
+                            + "Los asientos asignados en especial van del 0 al " + Lhead.getElement().getColaEspecial().getSize() + "\n"
                             + "La cantidad de personas en oro es" + Lhead.getElement().getColaOro().getSize() + "\n"
                             + "La siguiente persona en oro por antender es " + Lhead.getElement().getColaOro().first().getNombre() + "\n"
-                            + "Los asientos asignads en oro van del 0 al " + Lhead.getElement().getColaOro().getSize() + "\n"
+                            + "Los asientos asignados en oro van del 0 al " + Lhead.getElement().getColaOro().getSize() + "\n"
                             + "La cantidad de personas en platino es" + Lhead.getElement().getColaPlatino().getSize() + "\n"
                             + "La siguiente persona en platino por antender es " + Lhead.getElement().getColaPlatino().first().getNombre() + "\n"
-                            + "Los asientos asignads en platino van del 0 al " + Lhead.getElement().getColaPlatino().getSize() + "\n"
-                            + "La cantidad de personas en economico es" + Lhead.getElement().getColaEconomico().getSize() + "\n"
-                            + "La siguiente persona en economico por antender es " + Lhead.getElement().getColaEconomico().first().getNombre()+ "\n"
-                            + "Los asientos asignads en economico van del 0 al " + Lhead.getElement().getColaEconomico().getSize();
+                            + "Los asientos asignados en platino van del 0 al " + Lhead.getElement().getColaPlatino().getSize() + "\n"
+                            + "La cantidad de personas en económico es" + Lhead.getElement().getColaEconomico().getSize() + "\n"
+                            + "La siguiente persona en económico por antender es " + Lhead.getElement().getColaEconomico().first().getNombre()+ "\n"
+                            + "Los asientos asignadas en económico van del 0 al " + Lhead.getElement().getColaEconomico().getSize();
                 } else {
                     Lhead = Lhead.getNext();
                 }
@@ -155,7 +155,7 @@ public class Controlador {
                     return "La prioridad utilizada MaxHeap" + "\n"
                             + "La cantidad de personas es " + Lhead.getElement().getHeapPersonas().getSize() + "\n"
                             + "La siguiente persona por antender es " + Lhead.getElement().getHeapPersonas().getRaiz().getValor().getNombre() + "\n"
-                            + "Los asientos asignads van del 0 al " + Lhead.getElement().getHeapPersonas().getSize();
+                            + "Los asientos asignados van del 0 al " + Lhead.getElement().getHeapPersonas().getSize();
                 }else{
                    Lhead = Lhead.getNext(); 
                 }

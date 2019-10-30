@@ -65,12 +65,12 @@ public class Main {
         //vue2.setPuerta(3);
         Personas per9 = new Personas("Pedro", "dfghjk", 8745, "bhnjm", "CR", "USA", 4);
         Personas per10 = new Personas("Juan", "dfghjk", 8745, "bhnjm", "CR", "USA", 4);
-        Personas per11 = new Personas("Pedro", "dfghjk", 8745, "bhnjm", "CR", "USA", 3);
-        Personas per12 = new Personas("Juan", "dfghjk", 8745, "bhnjm", "CR", "USA", 3);
-        Personas per13 = new Personas("Pedro", "dfghjk", 8745, "bhnjm", "CR", "USA", 2);
-        Personas per14 = new Personas("Juan", "dfghjk", 8745, "bhnjm", "CR", "USA", 2);
-        Personas per15 = new Personas("Pedro", "dfghjk", 8745, "bhnjm", "CR", "USA", 1);
-        Personas per16 = new Personas("Juan", "dfghjk", 8745, "bhnjm", "CR", "USA", 1);
+        Personas per11 = new Personas("Guada", "dfghjk", 8745, "bhnjm", "CR", "USA", 3);
+        Personas per12 = new Personas("Samuel", "dfghjk", 8745, "bhnjm", "CR", "USA", 3);
+        Personas per13 = new Personas("Fabrizio", "dfghjk", 8745, "bhnjm", "CR", "USA", 2);
+        Personas per14 = new Personas("Jimena", "dfghjk", 8745, "bhnjm", "CR", "USA", 2);
+        Personas per15 = new Personas("Josue", "dfghjk", 8745, "bhnjm", "CR", "USA", 1);
+        Personas per16 = new Personas("Debora", "dfghjk", 8745, "bhnjm", "CR", "USA", 1);
         vue2.getColaEspecial().enqueue(per15);
         vue2.getColaEspecial().enqueue(per16);
         vue2.getColaOro().enqueue(per13);
@@ -149,5 +149,15 @@ public class Main {
         ventana.setTitle("Seleccion de Modulos");
         ventana.dispose();
         ventana.setVisible(true);
+        
+        /*System.out.println(vue2.getHeapPersonas().Bpersonas(2).getNombre());
+        System.out.println(vue2.getHeapPersonas().delete(2));
+        //System.out.println(vue2.getHeapPersonas().existe(2));
+        System.out.println(vue2.getHeapPersonas().Bpersonas(2).getNombre());
+        System.out.println(vue2.getHeapPersonas().delete(2));
+        System.out.println(vue2.getHeapPersonas().existe(2));*/
+        System.out.println(vue2.getHeapPersonas().Cantidad(2));
+        System.out.println(vue2.getHeapPersonas().Bpersonas(2).getNombre());
+
     }
 }
