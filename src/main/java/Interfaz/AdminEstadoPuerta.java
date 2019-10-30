@@ -118,12 +118,15 @@ public class AdminEstadoPuerta extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-        String[] elementos = list1.getSelectedItem().split("\\s");
-        String puerta = elementos[1];
-        int intpuerta = Integer.parseInt(puerta);
-        String mensaje = Controlador.consultarAdminEstadoPuertas(intpuerta);
-        JOptionPane.showMessageDialog(null, mensaje, "Información de puerta", JOptionPane.INFORMATION_MESSAGE);
+        if (list1.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(null, "Seleccione una puerta", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } else {
+            String[] elementos = list1.getSelectedItem().split("\\s");
+            String puerta = elementos[1];
+            int intpuerta = Integer.parseInt(puerta);
+            String mensaje = Controlador.consultarAdminEstadoPuertas(intpuerta);
+            JOptionPane.showMessageDialog(null, mensaje, "Información de puerta", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

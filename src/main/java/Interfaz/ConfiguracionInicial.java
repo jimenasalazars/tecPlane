@@ -59,6 +59,12 @@ public class ConfiguracionInicial extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel4.setText("Indique la cantidad de puertas que desea.");
 
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
         jButton3.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jButton3.setText("Aceptar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -176,7 +182,7 @@ public class ConfiguracionInicial extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Rellene todos los espacios", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 String cadena = jTextField1.getText();
-                cadena.toLowerCase();
+                cadena=cadena.toLowerCase();
                 if ("cola".equals(cadena) || "heap".equals(cadena)) {
                     String puertas = jTextField2.getText();
                     String tiempo = jTextField4.getText();
@@ -222,6 +228,10 @@ public class ConfiguracionInicial extends javax.swing.JFrame {
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments

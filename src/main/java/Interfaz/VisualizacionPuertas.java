@@ -7,6 +7,7 @@ package Interfaz;
 
 import Datos.Vuelos;
 import Logica.ControlerJ;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -114,16 +115,20 @@ public class VisualizacionPuertas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String[] elementos = list1.getSelectedItem().split("\\s");
-        String puerta = elementos[1];
-        int intpuerta = Integer.parseInt(puerta);
-        Vuelos.setPuertaSeleccionada(intpuerta);
-        System.out.println(Vuelos.getPuertaSeleccionada());
-        
-        AtencionPersonas ventSiguiente = new AtencionPersonas();
-        ventSiguiente.setTitle("Atencion de Personas");
-        dispose();
-        ventSiguiente.setVisible(true);
+        if (list1.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(null, "Seleccione una puerta", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } else {
+            String[] elementos = list1.getSelectedItem().split("\\s");
+            String puerta = elementos[1];
+            int intpuerta = Integer.parseInt(puerta);
+            Vuelos.setPuertaSeleccionada(intpuerta);
+            System.out.println(Vuelos.getPuertaSeleccionada());
+
+            AtencionPersonas ventSiguiente = new AtencionPersonas();
+            ventSiguiente.setTitle("Atencion de Personas");
+            dispose();
+            ventSiguiente.setVisible(true);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

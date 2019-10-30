@@ -123,12 +123,16 @@ public class AdminPuertas extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // boton aceptar
-        try {
-            int Npuertas = Integer.parseInt(jTextField1.getText());
-            Vuelos.setDisminucionPuertas(Vuelos.getCantPuertas() + Npuertas);
-            Vuelos.setCantPuertas(Vuelos.getCantPuertas() + Npuertas);
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Verifique los datos ingresado", "Error", JOptionPane.ERROR_MESSAGE);
+        if (jTextField1.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Rellene el espacio", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            try {
+                int Npuertas = Integer.parseInt(jTextField1.getText());
+                Vuelos.setDisminucionPuertas(Vuelos.getCantPuertas() + Npuertas);
+                Vuelos.setCantPuertas(Vuelos.getCantPuertas() + Npuertas);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Verifique los datos ingresado", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

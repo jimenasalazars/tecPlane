@@ -120,11 +120,15 @@ public class AsignacionVuelos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String[] elementos = listaVuelosAsignar.getSelectedItem().split("\\s");
-        String destino = elementos[1];
-        
-        String dato = ControlerJ.asignar(destino);
-        JOptionPane.showMessageDialog(null, dato, "Asignación de puerta", JOptionPane.INFORMATION_MESSAGE);
+        if (listaVuelosAsignar.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(null, "Seleccione un vuelo", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } else {
+            String[] elementos = listaVuelosAsignar.getSelectedItem().split("\\s");
+            String destino = elementos[1];
+
+            String dato = ControlerJ.asignar(destino);
+            JOptionPane.showMessageDialog(null, dato, "Asignación de puerta", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
