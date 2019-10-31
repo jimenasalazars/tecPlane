@@ -25,13 +25,23 @@ import javax.swing.JOptionPane;
  * @author Usuario
  */
 public class ControlerJ {
-    
+    /**
+     * Metodo pata configuarcion inicial
+     * @param prioridad
+     * @param puertas
+     * @param tiempo 
+     */
     public static void setConfInicial(String prioridad,int puertas, int tiempo){
         Vuelos.setPrioridadSeleccionada(prioridad);
         Vuelos.setCantPuertas(puertas);
         Vuelos.setRangoTiempo(tiempo);
         Vuelos.setDisminucionPuertas(puertas);
     }
+    /**
+     * metodo para identificar un int
+     * @param cadena
+     * @return 
+     */
     public static boolean isNumeric(String cadena){
 	try {
 		Integer.parseInt(cadena);
@@ -43,7 +53,10 @@ public class ControlerJ {
 }
     
 
-    
+    /**
+     * Metodo para cargar vuelos
+     * @param AsignacionVuelos 
+     */
     public static void cargarVuelos(java.awt.List AsignacionVuelos){
         AsignacionVuelos.clear();
         
@@ -56,7 +69,11 @@ public class ControlerJ {
             vueloTemp = vueloTemp.getNext();
         }
     }
-    
+    /**
+     * Metodo para asignar vuelos
+     * @param Destination
+     * @return 
+     */
     public static String asignar(String Destination) {
         int cantidad = Vuelos.disminucionPuertas;
         listasimple.Nodo vueloTemp = Vuelos.listaVuelos.getHead().getNext();
@@ -77,7 +94,10 @@ public class ControlerJ {
         }
         return "Imposible realizar la accion solicitada";
     }
-    
+    /**
+     * metodo para cargar puertas
+     * @param listPuertas 
+     */
     public static void cargarPuertas (java.awt.List listPuertas){
         listPuertas.clear();
         
@@ -93,7 +113,11 @@ public class ControlerJ {
             }
         }
     }
-    
+    /**
+     * metodo para mostrar la info de una persona
+     * @param puertaSeleccion
+     * @return 
+     */
     public static String mostrarInfoPersona(int puertaSeleccion){
         listasimple.Nodo vueloTemp = Vuelos.listaVuelos.getHead().getNext();
 
@@ -164,7 +188,12 @@ public class ControlerJ {
 
         
     }
-    
+    /**
+     * Metodo del api de lenguaje natural
+     * @param dato
+     * @return
+     * @throws Exception 
+     */
     public static float NaturalLanguage(String dato)throws Exception{
         try (LanguageServiceClient language = LanguageServiceClient.create()) {
 
@@ -178,7 +207,11 @@ public class ControlerJ {
 
     public static final String ACCOUNT_SID ="ACa1321939379136cb2b63c38e57f6e7ba";
     public static final String AUTH_TOKEN ="c1bee27a5a5a1a4e22e417c03a0e96b4";
-    
+    /**
+     * Metodo del api de SMS
+     * @param asiento
+     * @param numeroTelefonico 
+     */
     public static void smsSender(String asiento, String numeroTelefonico) {
         
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
@@ -187,7 +220,11 @@ public class ControlerJ {
 
         System.out.println(message.getSid());
     }
-    
+    /**
+     * Metodo para cerrar una puerta
+     * @param puerta
+     * @return 
+     */
     public static String cerrarPuerta(int puerta){
         listasimple.Nodo vueloTemp = Vuelos.listaVuelos.getHead().getNext();
         for (int i = 0; i < Vuelos.listaVuelos.getSize() ; i++) {
@@ -213,6 +250,11 @@ public class ControlerJ {
         }
         return "No hay vuelos por asignar";
     }
+    /**
+     * Metodo para insertar una persona aleatoria
+     * @param puerta
+     * @param elemento 
+     */
     public static void AleatorioEspecial(int puerta, boolean elemento) {
         Personas per = new Personas();
         per.setClase(1);
@@ -259,6 +301,10 @@ public class ControlerJ {
         };
         timer.schedule(task, 2000, 30000);
     }
+    /**
+     * Metodo para estadistica
+     * @return 
+     */
     public static String checinEstadistica(){
         int especial =0;
         int oro =0;
@@ -295,7 +341,10 @@ public class ControlerJ {
     }
         return "La cantidad de especial: "+especial+"\n"+"La cantidad de oro: "+oro+"\n"+"La cantidad de platino: "+platino+"\n"+"La cantidad de económico: "+economico;
     }
-    
+    /**
+     * Metodo para estadistica
+     * @return 
+     */
     public static String onboardEstadistica() {
         int especial = 0;
         int oro = 0;
@@ -348,6 +397,10 @@ public class ControlerJ {
         }
         return finalS;
     }
+    /**
+     * Metodo para estadistica
+     * @return 
+     */
     public static float promedioComentarios(){
         Comentarios.Nodo headC = Vuelos.comentarios.getHead().getNext();
         float sumatoria=0;
@@ -357,7 +410,10 @@ public class ControlerJ {
         }
         return sumatoria/Vuelos.comentarios.getSize();
     }
-    
+    /**
+     * Metodo de estadistica
+     * @return 
+     */
     public static String tiempoporplandelealtad(){
         int especial =0;
         int oro=0;
@@ -404,7 +460,10 @@ public class ControlerJ {
                 +"Tiempo de platino "+platino+" segundos."+"\n"
                 +"Tiempo de económico "+economico+" segundos."; 
 }
-    
+    /**
+     * Metodo de estadistica
+     * @return 
+     */
     public static String tiemposalida(){
         int especial =0;
         int oro=0;

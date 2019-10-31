@@ -13,7 +13,17 @@ import java.awt.*;
  * @author samue
  */
 public class Controlador {
-    
+    /**
+     * Metodo para ingresar personas a un vuelo
+     * @param nombre
+     * @param fechaDeNacimiento
+     * @param númeroDePasaporte
+     * @param nacionalidad
+     * @param lugarDeOrige
+     * @param lugarDeDestino
+     * @param clase
+     * @return 
+     */
     public static String ingresarPersona(String nombre, String fechaDeNacimiento, int númeroDePasaporte, String nacionalidad, String lugarDeOrige, String lugarDeDestino, int clase) {
         
         String[] seat = {"P", "C", "V"};
@@ -97,7 +107,11 @@ public class Controlador {
         }
         return "Imposible asignar asiento";
     }
-    
+    /**
+     * Metodo para identificar la clase de una persona
+     * @param dato
+     * @return 
+     */
     public static int Tclase (String dato){
         if ("economico".equals(dato)){
             return 4;
@@ -115,7 +129,10 @@ public class Controlador {
             return 0; 
         }
     }
-    
+    /**
+     * Metodo para cargar la adiministracion de estado de puertas
+     * @param listbox 
+     */
     public static void cargarAdminEstadoPuertas (java.awt.List listbox){
         
         listbox.clear();
@@ -124,6 +141,11 @@ public class Controlador {
         }
         
     }
+    /**
+     * Metodo de consulta de estado de puertas
+     * @param numPuerta
+     * @return 
+     */
     public static String consultarAdminEstadoPuertas(int numPuerta) {
         
         listasimple.Nodo Lhead = Vuelos.listaVuelos.getHead().getNext();
