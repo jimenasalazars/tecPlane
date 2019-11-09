@@ -205,8 +205,8 @@ public class ControlerJ {
         }
     }
 
-    public static final String ACCOUNT_SID ="ACa1321939379136cb2b63c38e57f6e7ba";
-    public static final String AUTH_TOKEN ="c1bee27a5a5a1a4e22e417c03a0e96b4";
+    public static final String ACCOUNT_SID ="AC2b07416a047d04a7174effc085377692";
+    public static final String AUTH_TOKEN ="7b619dd56fc3eddcd828867326189d07";
     /**
      * Metodo del api de SMS
      * @param asiento
@@ -216,7 +216,7 @@ public class ControlerJ {
         
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 
-        Message message = Message.creator(new PhoneNumber(numeroTelefonico),new PhoneNumber("+12055461781"),asiento).create();
+        Message message = Message.creator(new PhoneNumber(numeroTelefonico),new PhoneNumber("+12563339206"),asiento).create();
 
         System.out.println(message.getSid());
     }
